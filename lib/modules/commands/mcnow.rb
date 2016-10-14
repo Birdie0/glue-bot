@@ -3,7 +3,7 @@ module Bot
     # Like `mctrack` post *playing now* only once.
     module MCNow
       extend Discordrb::Commands::CommandContainer
-      command :mcnow  do |event|
+      command :mcnow do |event|
         page = Nokogiri::HTML(open('https://www.mctl.gq/', ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE))
         event << '__**Monstercat FM**__'
         event << "Now playing: **#{page.css('span#title').text}**"

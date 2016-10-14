@@ -37,9 +37,9 @@ module Bot
   # Bot buckets
   BOT.bucket :limit, limit: 3, time_span: 300, delay: 100
 
-  # Bot permission
+  # User permission
   BOT.set_user_permission(CONFIG.owner, 1)
-  
+
   # Run the bot
   BOT.run
 end

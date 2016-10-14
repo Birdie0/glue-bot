@@ -11,7 +11,7 @@ module Bot
         loops[event.channel.id] = true
         while loops[event.channel.id]
           page = Nokogiri::HTML(open('https://www.mctl.gq/',
-                                ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE))
+                                     ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE))
           if title != page.css('span#title').text
             event.respond "__**Monstercat FM**__
             Now playing: **#{page.css('span#title').text}**
