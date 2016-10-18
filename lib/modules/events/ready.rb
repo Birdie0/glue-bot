@@ -5,6 +5,7 @@ module Bot
       extend Discordrb::EventContainer
       ready do |event|
         event.bot.game = CONFIG.game
+        puts BOT.invite_url
         puts 'Bot is ready!'
       end
     end

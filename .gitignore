@@ -2,6 +2,10 @@
 /data/config.yaml
 /Gemfile.lock
 
+# Other DLLs (For Windows)
+opus.dll
+libsodium.dll
+
 *.gem
 *.rbc
 /.config
