@@ -8,9 +8,8 @@ module Bot
         f << "\n#{args.join(' ')}"
         f.close
         event.message.delete
-        m = event.respond "__*#{args.join(' ')}*__ was added to custom playlist!"
-        sleep 3
-        m.delete
+        event.send_temp("__*#{args.join(' ')}*__ was added to custom playlist!", 3)
+        BOT.send_message(CONFIG.music_list_id, "*`#{args.join(' ')}`* added by **#{event.user.name}**", false, CONFIG.channel_id)
       end
     end
   end

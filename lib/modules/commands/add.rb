@@ -7,11 +7,10 @@ module Bot
       command(:add, description: "Add list of tracks in Mee6's command style!", usage: '+add song1, http://link2.com, etc.', bucket: :limit) do |event, *args|
         args = args.join(' ').split(',')
         break unless args.length <= 6
-        event.respond "#{args.length} tracks added by **#{event.user.name}**"
+        # event.respond "#{args.length} tracks added by **#{event.user.name}**"
         args.each do |i|
-          m = event.respond "!add #{i}"
-          sleep 1
-          m.delete
+          event.send_temp("!add #{i}", 3)
+          sleep 3
         end
         nil
       end
