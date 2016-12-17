@@ -1,8 +1,8 @@
 while true
 do
-  # uncomment this if you want use updating from github.com when launch or restart bot
+  # comment this if you don't want use updating from github.com when launch or restart bot
   # echo "updating from git.."
-  # git pull
+  git pull
 
   # uncomment this if you want use style checker when launch or restart bot
   # echo "running rubocop.."
