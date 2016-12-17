@@ -22,7 +22,7 @@ List of commands:
     * `fplaylist` - adds a list of random tracks from your playlist in Flamingo's command style!; 
   * _Monstercat_
     * `mcnow` - shows name of track, artist, album and album cover of song playing now on [Monstercat FM](https://twitch.tv/monstercat)
-    * `mctrack` - same as above but updates itself when song is changed;
+    * `mctrack` - same as above but sends a new message when song is changed;
     * `mcstop` - stop the looping;
   * _Comics_
     * `xkcd` - shows random comic from [xkcd](http://xkcd.com/);
@@ -53,12 +53,12 @@ List of commands:
     * Run `gem install bundler` or `gem i bundler` in terminal.
 
 ## Questions:
-  * If you have questions or suggestions, please come here -> [Discord](https://discord.gg/eJcMYph)
+  * If you have any questions or suggestions, please come here -> [Discord](https://discord.gg/eJcMYph)
 
 ## Additional links:
- * http://mee6.xyz/ - Cool bot
+ * https://mee6.xyz - Cool bot
  * https://flambot.xyz - The other music bot
- * https://www.mctl.gq/ - Monstercat FM playlist
+ * https://www.mctl.gq - Monstercat FM playlist
  * https://twitch.tv/monstercat - Monstercat Twitch channel
- * http://xkcd.com/ - xkcd comic by Rendall Munroe
+ * https://xkcd.com - xkcd comic by Rendall Munroe
  * https://github.com/z64/gemstone - bot was rewrited using this template. 
