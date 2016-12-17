@@ -13,3 +13,7 @@ owner:
 
 # game the bot is playing
 game:
+
+# custom music tracker
+music_list_id:
+channel_id:

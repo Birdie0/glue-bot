@@ -26,10 +26,8 @@ module Bot
         end
       end
       command(:mcstop, permission_level: 1) do |event|
-        loops[event.channel.id] = false
-        m = event.respond 'Stop!'
-        sleep 3
-        m.delete
+        loops[event.channel.id] = false        
+        event.send_temp('Stopped!',3)
       end
     end
   end

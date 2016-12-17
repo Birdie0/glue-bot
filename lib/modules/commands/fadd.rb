@@ -1,15 +1,15 @@
 module Bot
   module DiscordCommands
-    # Convert music request from pre-generated playlists.
+    # Add music request from pre-generated playlists.
     # Max 6 songs for one request.
-    module Add
+    module FAdd
       extend Discordrb::Commands::CommandContainer
-      command(:add, description: "Add list of tracks in Mee6's command style!", usage: '+add song1, http://link2.com, etc.', bucket: :limit) do |event, *args|
+      command(:fadd, description: "Add list of tracks in Flamingo's command style!", bucket: :limit) do |event, *args|
         args = args.join(' ').split(',')
         break unless args.length <= 6
         # event.respond "#{args.length} tracks added by **#{event.user.name}**"
         args.each do |i|
-          event.send_temp("!add #{i}", 3)
+          event.send_temp("f!add #{i}", 3)
           sleep 3
         end
         nil

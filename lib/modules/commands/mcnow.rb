@@ -1,6 +1,6 @@
 module Bot
   module DiscordCommands
-    # Like `mctrack` post *playing now* only once.
+    # Current *playing now* from `Monstercat.FM`.
     module MCNow
       extend Discordrb::Commands::CommandContainer
       command :mcnow do |event|

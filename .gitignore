@@ -6,6 +6,9 @@
 opus.dll
 libsodium.dll
 
+# Playlists
+/playlists/*.txt
+
 *.gem
 *.rbc
 /.config

@@ -1,6 +1,6 @@
 module Bot
   module DiscordCommands
-    # Send picture with easy-to-learn Markdown basics.
+    #  shows random comic from a Softer World.
     module SofterWorld
       extend Discordrb::Commands::CommandContainer
       command :asw do |event|

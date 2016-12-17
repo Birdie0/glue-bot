@@ -4,23 +4,34 @@ This is bot for Discord with some nice features! The base idea of creation of bo
 It can work with other bots but I not guarantee it. Many features been here such a spam, message animation and others but stays the most stabile and less ratelimit causing. They are back. Maybe... It distant future...
 
 List of commands:
-  * _Info_ - some basic info
-    * `about` - info about bot;
-    * `markdown` - show you basics of Markdown;
-    * `github` - gives link to this repository.
+  * _Info_
+    * `about` - basic info about bot;
+    * `markdown` - Markdown tutorial;
+    * `invite` - gives invite to support server;
+    * `github` - gives link to this repository;
     * 
   * _Mee6_
-    * `add` - add list of tracks in Mee6's command style!;
-    * `custom` - add track to *custom* playlist;
-    * `list` - show avaliable playlists;
-    * `show` - add list of random tracks from your playlist in custom command style! (Probably not work but you can try...);
+    * `add` - adds a list of tracks in Mee6's command style!;
+    * `custom` - adds a track to *custom* playlist;
+    * `list` - shows avaliable playlists;
+    * `playlist` - adds a list of random tracks from your playlist in Mee6's command style!;
+    * `show` - shows a list of random tracks from chosen playlist;
+    * `create` - creates empty playlist; 
+  * _Flamingo_ 
+    * `fadd` - add list of tracks in Flamingo's command style!;
+    * `fplaylist` - adds a list of random tracks from your playlist in Mee6's command style!; 
   * _Monstercat_
-    * `mcnow` - return name of track, artist, album and album cover of song playing now on [Monstercat FM](https://twitch.tv/monstercat)
+    * `mcnow` - shows name of track, artist, album and album cover of song playing now on [Monstercat FM](https://twitch.tv/monstercat)
     * `mctrack` - same as above but self update when song is changed;
-    * `nocat` - stop the looping;
+    * `mcstop` - stop the looping;
+  * _Comics_
+    * `xkcd` - shows random comic from [xkcd](http://xkcd.com/);
+    * `asw` - shows random comic from [a Softer World](http://www.asofterworld.com/);
+    * `nedr` - shows random comic from [Nedroid](http://nedroid.com/);
   * _Secret (kinda)_
-    * `eval` - no comments, dangerous...
-    * `restart` - turn off bot... But using `run.sh` for launching restart bot.
+    * `eval` - eval command, very dangerous...
+    * `restart` - turns off your bot. If you launch bot with `./run.sh` it's will restarts;
+    * `ping` - Responds with "Pong!" with ping.
 
 ## Requirements:
 * Ruby 2.3.x+
@@ -46,6 +57,7 @@ List of commands:
 
 ## Additional links:
  * http://mee6.xyz/ - Cool bot
- * https://www.mctl.gq/ - Parse info about now playing from here
+ * https://www.mctl.gq/ - Monstercat FM playlist
  * https://twitch.tv/monstercat - Monstercat Twitch channel
+ * http://xkcd.com/ - xkcd comic by Rendall Munroe
  * https://github.com/z64/gemstone - bot was rewrited using this template. 

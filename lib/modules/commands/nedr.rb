@@ -1,6 +1,6 @@
 module Bot
   module DiscordCommands
-    # Send picture with easy-to-learn Markdown basics.
+    # Shows random comic from Nedroid.
     module Nedroid
       extend Discordrb::Commands::CommandContainer
       command :nedr do |event|

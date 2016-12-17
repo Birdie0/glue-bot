@@ -1,7 +1,6 @@
 module Bot
   module DiscordCommands
-    # Github link.
-    # Nothing to say.
+    # Gives invite and support server urls.
     module Invite
       extend Discordrb::Commands::CommandContainer
       command :invite do |event|
