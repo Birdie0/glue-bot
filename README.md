@@ -55,15 +55,15 @@ List of commands:
   * If you have any questions or suggestions, please come here -> [Discord](https://discord.gg/eJcMYph)
 
 ## Additional links:
-##### Bots
+* _Bots_
   * https://mee6.xyz - Cool bot
   * https://flambot.xyz - The other music bot  
-##### Monstercat
+* _Monstercat_
   * https://www.mctl.gq - Monstercat FM playlist
   * https://twitch.tv/monstercat - Monstercat Twitch channel  
-##### Comics
+* _Comics_
   * https://xkcd.com - webcomic by Randall Munroe
   * http://www.asofterworld.com - webcomic by Joey Comeau and Emily Horne
   * http://nedroid.com - webcomic by Anthony Clar  
-##### Template
+* _Template_
   * https://github.com/z64/gemstone - bot was rewrited using this template.
