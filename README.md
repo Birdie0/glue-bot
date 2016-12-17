@@ -57,13 +57,13 @@ List of commands:
 ## Additional links:
 ##### Bots
   * https://mee6.xyz - Cool bot
-  * https://flambot.xyz - The other music bot
+  * https://flambot.xyz - The other music bot  
 ##### Monstercat
   * https://www.mctl.gq - Monstercat FM playlist
-  * https://twitch.tv/monstercat - Monstercat Twitch channel
+  * https://twitch.tv/monstercat - Monstercat Twitch channel  
 ##### Comics
   * https://xkcd.com - webcomic by Randall Munroe
   * http://www.asofterworld.com - webcomic by Joey Comeau and Emily Horne
-  * http://nedroid.com - webcomic by Anthony Clar
+  * http://nedroid.com - webcomic by Anthony Clar  
 ##### Template
   * https://github.com/z64/gemstone - bot was rewrited using this template.
