@@ -13,8 +13,8 @@ module Bot
           event.respond "#{n} tracks added by **#{event.user.name}** from __#{file.capitalize} playlist__"
           sleep 0.5
           File.readlines("playlists/#{file.downcase}.txt").sample(n.to_i).each do |i|
-            event.send_temp("!add #{i}", 3)
-            sleep 3
+            event.send_temp("!add #{i}", 1)
+            sleep 2
           end
         end
         nil

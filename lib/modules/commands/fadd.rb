@@ -9,8 +9,8 @@ module Bot
         break unless args.length <= 6
         # event.respond "#{args.length} tracks added by **#{event.user.name}**"
         args.each do |i|
-          event.send_temp("f!add #{i}", 3)
-          sleep 3
+          event.send_temp("f!add #{i}", 1)
+          sleep 2
         end
         nil
       end
