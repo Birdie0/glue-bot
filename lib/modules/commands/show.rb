@@ -10,9 +10,10 @@ module Bot
         else
           n = '10' if n.to_i > 10
           sleep 0.5
+          list = File.readlines("playlists/#{file.downcase}.txt")
           event << '```md'
           event << "Some random songs from #{file.downcase} playlist:"
-          File.readlines("playlists/#{file.downcase}.txt").sample(n.to_i).each do |i|
+          list.sample(n.to_i)..take(list.length-1).each do |i|
             event << "* #{i.chomp}"
           end
           event << '```'

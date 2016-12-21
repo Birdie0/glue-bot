@@ -11,7 +11,7 @@ module Bot
           event << "Very funny! You Can't Touch This Playlist!"
         else
           f = File.new("playlists/#{args.first.downcase}.txt", 'a')
-          f << "\n#{args.slice(1,args.length).join(' ')}"
+          f << "#{args.slice(1,args.length).join(' ')}\n"
           f.close
           event.message.delete
           event.send_temp("__*#{args.slice(1,args.length).join(' ')}*__ was added to #{args.first.downcase} playlist!", 3)
