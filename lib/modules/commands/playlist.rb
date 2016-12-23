@@ -12,7 +12,8 @@ module Bot
           n = '5' if n.to_i > 5
           event.respond "#{n} tracks added by **#{event.user.name}** from __#{file.capitalize} playlist__"
           sleep 0.5
-          File.readlines("playlists/#{file.downcase}.txt").sample(n.to_i).each do |i|
+          playlist = File.readlines("playlists/#{file.downcase}.txt")
+          playlist.first(playlist.length).sample(n.to_i).each do |i|
             event.send_temp("!add #{i}", 1)
             sleep 2
           end
