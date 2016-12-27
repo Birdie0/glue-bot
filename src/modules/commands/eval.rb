@@ -10,7 +10,7 @@ module Bot
         begin
           eval code.join(' ')
         rescue => e
-          "An error occurred ;( ```#{e}```"
+          "An error occurred 😞 ```#{e}```"
         end
       end
     end

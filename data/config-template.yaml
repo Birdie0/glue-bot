@@ -2,7 +2,7 @@
 # Discord API client ID
 client_id:
 
-# Discord API bot user token
+# Discord API client token
 token:
 
 # Command prefix
@@ -14,6 +14,6 @@ owner:
 # game the bot is playing
 game:
 
-# custom music tracker
+# music posting
 music_list_id:
 channel_id:

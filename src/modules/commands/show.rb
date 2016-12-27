@@ -13,7 +13,7 @@ module Bot
           list = File.readlines("playlists/#{file.downcase}.txt")
           event << '```md'
           event << "Some random songs from #{file.downcase} playlist:"
-          list.sample(n.to_i).first(list.length-1).each do |i|
+          list.sample(n.to_i).first(list.length - 1).each do |i|
             event << "* #{i.chomp}"
           end
           event << '```'

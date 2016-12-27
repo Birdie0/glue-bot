@@ -1,13 +1,10 @@
+# Playlists
+/playlists/*.txt
+
 # Discord config file
 /data/config.yaml
 /Gemfile.lock
-
-# Other DLLs (For Windows)
-opus.dll
-libsodium.dll
-
-# Playlists
-/playlists/*.txt
+#/run.sh
 
 *.gem
 *.rbc
