@@ -67,3 +67,5 @@ List of commands:
   * http://nedroid.com - webcomic by Anthony Clar  
 * _Template_
   * https://github.com/z64/gemstone - bot was rewrited using this template.
+  
+## Invite the bot: https://discordapp.com/oauth2/authorize?&client_id=182241887703269376&scope=bot
