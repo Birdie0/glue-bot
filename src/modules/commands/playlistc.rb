@@ -4,7 +4,7 @@ module Bot
     # Max 5 songs for one request.
     module PlaylistC
       extend Discordrb::Commands::CommandContainer
-      command(:playlistc, min_args: 1, max_args: 2, bucket: :limit) do |event, file, prefix='!add', n = 3|
+      command(:playlistc, min_args: 3, bucket: :limit) do |event, file, prefix='!add', n = 3|
         if !File.exist?("playlists/#{file.downcase}.txt")
           event << "#{file} playlist is not exist!"
           event << "Type `#{BOT.prefix}list` for playlists list!"
