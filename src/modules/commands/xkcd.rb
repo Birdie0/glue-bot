@@ -1,10 +1,10 @@
 module Bot
   module DiscordCommands
-    # Sends random picture from `xkcd.com`.
+    # Sends random comic from `xkcd.com`.
     module Xkcd
       extend Discordrb::Commands::CommandContainer
       command :xkcd do |event|
-        page = Nokogiri::HTML(open('http://c.xkcd.com/random/comic/'))
+        page = Nokogiri::HTML(open('https://c.xkcd.com/random/comic/', ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE))
         event << "__**#{page.css('div#comic img')[0]['title']}**__"
         event << "http:#{page.css('div#comic img')[0]['src']}"
       end

@@ -8,10 +8,12 @@ module Bot
         args = args.join(' ').split(',')
         break unless args.length <= 6
         # event.respond "#{args.length} tracks added by **#{event.user.name}**"
+        event.bot.voice_connect(event.user.voice_channel)
         args.each do |i|
           event.send_temp("f!add #{i}", 1)
           sleep 2
         end
+        event.voice.destroy
         nil
       end
     end

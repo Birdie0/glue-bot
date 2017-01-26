@@ -40,7 +40,7 @@ module Bot
   BOT.bucket :limit, limit: 10, time_span: 1000, delay: 10
 
   # User permission
-  BOT.set_user_permission(CONFIG.owner, 1)
+  BOT.set_user_permission(CONFIG.owner, 999)
 
   # Run the bot
   BOT.run

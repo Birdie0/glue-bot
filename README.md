@@ -38,6 +38,8 @@ It can work with other bots but I do not guarantee it. Many features have been h
   * `restart` - turns off your bot. If you launch bot with `./run.sh` it's will restarts;
   * `ping` - Responds with "Pong!" with ping.
 
+## [Invite the bot](https://discordapp.com/oauth2/authorize?&client_id=182241887703269376&scope=bot)
+
 ## Requirements
 
 * Ruby 2.3.x+
@@ -84,5 +86,3 @@ If you have any questions or suggestions, please come on my [Discord server](htt
 ### Template
 
 * [gemstone](https://github.com/z64/gemstone) - bot was rewrited using this template
-
-## [Invite the bot](https://discordapp.com/oauth2/authorize?&client_id=182241887703269376&scope=bot)

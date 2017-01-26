@@ -1,10 +1,9 @@
 # Playlists
-/playlists/*.txt
+/playlists/
 
 # Discord config file
 /data/config.yaml
 /Gemfile.lock
-#/run.sh
 
 *.gem
 *.rbc

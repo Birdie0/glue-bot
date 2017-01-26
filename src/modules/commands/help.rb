@@ -2,9 +2,9 @@ module Bot
   module DiscordCommands
     # Github link.
     # Nothing to say.
-    module Help
+    module Help2
       extend Discordrb::Commands::CommandContainer
-      command :help do |event|
+      command :help2 do |event|
         event << '**Info commands**'
         event << '```md'
         event << '* help - Sends this message in PM/DM'

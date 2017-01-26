@@ -15,5 +15,5 @@ owner:
 game:
 
 # music posting
-music_list_id:
-channel_id:
+music_list_channel_id:
+music_list_server_id:

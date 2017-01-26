@@ -13,9 +13,8 @@ module Bot
           f = File.new("playlists/#{args.first.downcase}.txt", 'a')
           f << "#{args.slice(1, args.length).join(' ')}\n"
           f.close
-          event.message.delete
-          event.send_temp("__*#{args.slice(1, args.length).join(' ')}*__ was added to #{args.first.downcase} playlist!", 3)
-          BOT.send_message(CONFIG.music_list_id, "*`#{args.slice(1, args.length).join(' ')}`* added by **#{event.user.name}** to #{args.first.downcase} playlist", false, CONFIG.channel_id)
+          event.send_temp("__*#{args.slice(1, args.length).join(' ')}*__ was added to #{args.first.downcase} playlist!", 5)
+          # BOT.send_message(CONFIG.music_list_id, "*`#{args.slice(1, args.length).join(' ')}`* added by **#{event.user.name}** to #{args.first.downcase} playlist", false, CONFIG.channel_id)
         end
       end
     end
