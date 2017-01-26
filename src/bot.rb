@@ -4,7 +4,6 @@ require 'discordrb'
 require 'yaml'
 require 'open-uri'
 require 'nokogiri'
-require 'yourub'
 require 'json'
 
 # The main bot module.
