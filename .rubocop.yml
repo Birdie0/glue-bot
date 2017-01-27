@@ -1,2 +1,4 @@
 Lint/Eval:
   Enabled: false
+Style/EndOfLine:
+  Enabled: false

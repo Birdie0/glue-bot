@@ -41,6 +41,15 @@ module Bot
   # User permission
   BOT.set_user_permission(CONFIG.owner, 999)
 
+  # Whitelist
+  File.readlines('data/whitelist.txt').each { |i| BOT.set_user_permission(i, 10) }
+
+  # Blacklist
+  File.readlines('data/blacklist.txt').each { |i| BOT.ignore_user(i) }
+
+  # Stats
+  COMMANDS_USED = 0
+
   # Run the bot
   BOT.run
 end
