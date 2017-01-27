@@ -1,12 +1,12 @@
 module Bot
   module DiscordEvents
     # This event is processed each time the bot succesfully connects to discord.
-    module Ready
+    module Commands
       extend Discordrb::EventContainer
-      ready do |event|
-        event.bot.game = CONFIG.game
-        puts BOT.invite_url
-        puts 'Bot is ready!'
+      message(start_with: CONFIG.prefix) do |event|
+        break unless event.message.command
+        puts ""
+        COMMANDS_USED += 1
       end
     end
   end

@@ -1,12 +1,11 @@
 module Bot
   module DiscordEvents
     # This event is processed each time the bot succesfully connects to discord.
-    module Ready
+    module Mention
       extend Discordrb::EventContainer
-      ready do |event|
-        event.bot.game = CONFIG.game
-        puts BOT.invite_url
-        puts 'Bot is ready!'
+      mention(contains: "prefix") do |event|
+        event << "Oh, wow! Do You wanna know my prefix?"
+        event << "It's `#{CONFIG.prefix}`, silly... :wink:"
       end
     end
   end
