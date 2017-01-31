@@ -1,0 +1,13 @@
+{
+    "command":{
+        "description": "",
+        "usage": "",
+        "min_args": "",
+        "max_args": "",
+        "bucket": "",
+        "permission_level": ""
+    },
+    "help2":{
+        
+    }
+}

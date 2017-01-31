@@ -9,6 +9,7 @@ module Bot
         puts 'Restart...'
         event.respond 'Restart...'
         BOT.stop
+        exit
       end
     end
   end
