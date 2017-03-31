@@ -10,7 +10,8 @@ module Bot
         begin
           eval code.join(' ')
         rescue => e
-          "An error occurred 😞 ```#{e}```"
+          event << "An error occurred 😞 ```#{e}```"
+          event << "```#{e.backtrace.join("\n")}```"
         end
       end
     end

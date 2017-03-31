@@ -3,13 +3,18 @@ module Bot
     # Current *playing now* from `Monstercat.FM`.
     module MCNow
       extend Discordrb::Commands::CommandContainer
-      command :mcnow do |event|
+      command(:mcnow,
+              description: 'Shows information of the currently playing song on Monstercat FM',
+              usage: "#{BOT.prefix}mcnow") do |event|
         page = Nokogiri::HTML(open('https://www.mctl.gq/', ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE))
-        event << '__**Monstercat FM**__'
-        event << "Now playing: **#{page.css('span#title').text}**"
-        event << "by ***#{page.css('span#artists').text}***"
-        event << "Album: **#{page.css('span#album').text}**"
-        event << page.css('img#np-image')[0]['src']
+        event.channel.send_embed do |embed|
+          embed.title = 'Monstercat FM'
+          embed.description = "*#{page.css('span#title').text} - #{page.css('span#artists').text}*"
+          embed.image = Discordrb::Webhooks::EmbedImage.new(url: page.css('img#np-image')[0]['src'])
+          embed.footer = Discordrb::Webhooks::EmbedFooter.new(text: "Album: #{page.css('span#album').text}")
+          embed.timestamp = Time.now
+          embed.color = [0x399820, 0x1C5A71, 0xB57126, 0xAD2535].sample
+        end
       end
     end
   end

@@ -14,6 +14,9 @@ owner:
 # game the bot is playing
 game:
 
-# music posting
-music_list_channel_id:
-music_list_server_id:
+# Youtube API client key
+youtube_key:
+
+# Server & Channel IDs
+server_id:
+channel_id:

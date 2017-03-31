@@ -1,21 +1,35 @@
 module Bot
   module DiscordCommands
-    # Add music names to **custom** playlist.
+    # Add songs to chosen playlist.
     module AddTo
       extend Discordrb::Commands::CommandContainer
-      command(:addto, min_args: 2) do |event, *args|
-        if !File.exist?("playlists/#{args.first.downcase}.txt")
-          event << "#{args.first.downcase} playlist is not exist!"
-          event << "Type `#{BOT.prefix}list` for playlists list!"
-        elsif %w(custom birdie chillcorner monstercat).include?(args.first.downcase)
-          event << "Very funny! You Can't Touch This Playlist!"
+      command(:addto,
+              min_args: 2,
+              description: 'Adds the song to the playlist.',
+              usage: "#{BOT.prefix}addto <playlist> <song name>") do |event, name, *args|
+        name.downcase!
+        if !File.exist?("data/playlists/#{name}.json")
+          event << "*#{name}* playlist is not exist!"
         else
-          f = File.new("playlists/#{args.first.downcase}.txt", 'a')
-          f << "#{args.slice(1, args.length).join(' ')}\n"
-          f.close
-          event.send_temp("__*#{args.slice(1, args.length).join(' ')}*__ was added to #{args.first.downcase} playlist!", 5)
-          # BOT.send_message(CONFIG.music_list_id, "*`#{args.slice(1, args.length).join(' ')}`* added by **#{event.user.name}** to #{args.first.downcase} playlist", false, CONFIG.channel_id)
+          hash = JSON.parse(File.read("data/playlists/#{name}.json"))
+          if !((hash['authors'].include? event.user.id) || (hash['authors'].include? 0))
+            event << 'You can\'t edit this playlist.'
+          else
+            YT_CLIENT.search(max_results: 1, query: args.join(' ')) do |v|
+              id = v['id']
+              title = v['snippet']['title']
+              if hash['songs'].include? id
+                event << 'That song already exists in the playlist!'
+              else
+                hash['songs'][id] = title
+                open("data/playlists/#{name}.json", 'w') { |f| f << JSON.pretty_generate(hash) }
+                event << "*#{title}* was added to #{name} playlist!"
+                event.bot.channel(CONFIG.channel_id).send "`#{title} added by #{event.user.name} to #{name} playlist`"
+              end
+            end
+          end
         end
+        nil
       end
     end
   end

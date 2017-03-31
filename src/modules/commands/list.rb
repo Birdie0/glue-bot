@@ -1,21 +1,18 @@
 module Bot
   module DiscordCommands
-    # Show list of pre-generated playlists.
+    # Show list of playlists.
     module List
       extend Discordrb::Commands::CommandContainer
-      command :list do |event|
-        event << '```'
-        event << '📁 C:'
-        event << '║'
-        event << '╚═ 💿 Music'
+      command(:list,
+              description: 'Shows a list of all existing playlists.',
+              usage: "#{BOT.prefix}list") do |event|
+        event << '```css'
+        event << "📁 C:      [#{BOT.prefix}play <playlist> <prefix> <n>] - plays playlist"
+        event << "║          [#{BOT.prefix}show <playlist> <page>] - shows playlist"
+        event << '╚═💿 Music'
         event << '   │'
-        Dir.glob('playlists/*.txt').each do |i|
-          event << "   ├─#{File.basename(i, '.txt')}"
-        end
-        event << '   └─secret playlist.sha'
-        event << '# P.S. You can add your own tracks to **custom** playlist.'
-        event << "# Just type `#{BOT.prefix}custom <link or song name>`"
-        event << '```'
+        Dir['data/playlists/*.json'].each { |i| event << "   ├─#{File.basename(i, '.json')}.pls" }
+        event << '   └─backup.zip```'
       end
     end
   end

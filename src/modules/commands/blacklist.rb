@@ -3,22 +3,30 @@ module Bot
     # Blacklists user.
     module Blacklist
       extend Discordrb::Commands::CommandContainer
-      command(:blacklist, permission_level: 999) do |event, id, x = '+'|
-        list = File.readlines('data/blacklist.txt')
+      command(:blacklist,
+              help_available: false,
+              description: 'Blacklists chosen member.',
+              usage: "#{BOT.prefix}blacklist <+/-> <id>") do |event, id, x = '+'|
+        break unless event.user.id == CONFIG.owner
+        list = File.readlines('data/blacklist.txt').map(&:chomp)
         case x
         when '+'
           if list.include? id
-            event << 'User already blacklisted!!!'
-            break
+            event << 'That user is blacklisted already!'
+          else
+            open('data/blacklist.txt', 'a') { |f| f.puts id }
+            BOT.ignore_user(id)
+            event << "I just blocked <@#{id}>!"
           end
-          open('data/blacklist.txt', 'a') { |f| f.puts id }
-          BOT.ignore_user(id)
-          event << "Sorry, but I must to do this. You're bad person, <@#{id}>! :angry:"
         when '-'
-          list -= [id]
-          open('data/blacklist.txt', 'w') { |f| f.puts list }
-          BOT.unignore_user(id)
-          event << "I forgive you this time... Be nice, <@#{id}>... or you will get grrrr from me next time!!! :rage:"
+          if !list.include? id
+            event << 'Can\'t find that user in the blacklist!'
+          else
+            list -= [id]
+            open('data/blacklist.txt', 'w') { |f| f.puts list }
+            BOT.unignore_user(id)
+            event << "<@#{id}> was unblocked... Friends?"
+          end
         end
       end
     end

@@ -3,22 +3,23 @@ module Bot
     # Show music names from pre-generated playlists.
     module Show
       extend Discordrb::Commands::CommandContainer
-      command(:show, min_args: 1) do |event, file, n = 8|
-        if !File.exist?("playlists/#{file.downcase}.txt")
-          event << "#{file} playlist is not exist!"
+      command(:show,
+              min_args: 1,
+              description: 'Shows titles from the playlist.',
+              usage: "#{BOT.prefix}show <playlist> <page>") do |event, name, n = '1'|
+        name.downcase!
+        if !File.exist?("data/playlists/#{name}.json")
+          event << "#{name} playlist is not exist!"
           event << "Type `#{BOT.prefix}list` for playlists list!"
         else
-          n = '10' if n.to_i > 10
-          sleep 0.5
-          list = File.readlines("playlists/#{file.downcase}.txt")
+          n = n.to_i
+          list = JSON.parse(File.read("data/playlists/#{name}.json"))['songs']
+          n = list.length / 20 + 1 if n > list.length / 20 + 1
           event << '```md'
-          event << "Some random songs from #{file.downcase} playlist:"
-          list.sample(n.to_i).first(list.length - 1).each do |i|
-            event << "* #{i.chomp}"
-          end
+          event << "# #{name} playlist | page #{n}/#{list.length / 20 + 1}"
+          list.values.slice((n - 1) * 20, 20).each { |i| event << "* #{i.chomp}" }
           event << '```'
         end
-        nil
       end
     end
   end

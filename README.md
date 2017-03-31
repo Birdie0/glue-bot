@@ -1,6 +1,6 @@
 # glue-bot
 
-This is a bot for Discord with some nice features! The basic idea of the creation of this bot is making an easy multi-add function for the [Mee6 bot](http://mee6.xyz), [Flamingo](https://flambot.xyz) and tracking music from *Monstercat FM*.
+This is a bot for Discord with some nice features! The basic idea of the creation of this bot is making an easy multi-add function for the [Mee6 bot](http://mee6.xyz), [Flamingo](https://flambot.xyz), other music bots(?) and tracking music from *Monstercat FM*.
 It can work with other bots but I do not guarantee it. Many features have been here such a spam, message animation and others but stays the most stabile and less ratelimit causing. They are back. Maybe... In a distant future...
 
 ## List of commands
@@ -9,24 +9,18 @@ It can work with other bots but I do not guarantee it. Many features have been h
   * `about` - basic info about bot
   * `markdown` - Markdown tutorial
   * `invite` - gives invite to support server
-  * `github` - gives link to this repository
 
 * *Mee6*
-  * `add` - adds a list of tracks in Mee6's command style!
-  * `custom` - adds a track to *custom* playlist
+  * `addto` - adds a track to chosen playlist
   * `list` - shows available playlists
-  * `playlist` - adds a list of random tracks from your playlist in Mee6's command style!
+  * `play` - adds a list of random tracks from your playlist in Mee6's command style!
   * `show` - shows a list of random tracks from chosen playlist
   * `create` - creates empty playlist
-
-* *Flamingo*
-  * `fadd` - add list of tracks in Flamingo's command style!
-  * `fplaylist` - adds a list of random tracks from your playlist in Flamingo's command style!
+  * `search` - search songs in playlist by name
+  * `export` - generates .txt with links for Exporting to RhinoBot
 
 * *Monstercat*
   * `mcnow` - shows name of track, artist, album and album cover of song playing now on [Monstercat FM](https://twitch.tv/monstercat)
-  * `mctrack` - same as above but sends a new message when song is changed
-  * `mcstop` - stop the looping
 
 * *Comics*
   * `xkcd` - shows random comic from [xkcd](http://xkcd.com/)
@@ -40,22 +34,33 @@ It can work with other bots but I do not guarantee it. Many features have been h
 
 ## [Invite the bot](https://discordapp.com/oauth2/authorize?&client_id=182241887703269376&scope=bot)
 
-## Requirements
+## Hosting
+
+### Requirements
 
 * Ruby 2.3.x+
 * Computer
 * Internet
+* `bundler` gem
 
-## Installation
+### Installation
 
 1. Download or clone the current repository
-1. Rename `template-config.yaml` to `config.yaml` in `data` folder
+1. Rename `data-template` folder to `data`
 1. Replace `token`, `clientid`, `prefix` and `owner_id` to yours
-1. Run `bundle install --path vendor/bundle --binstubs`
-1. Run `chmod +x run.sh` in a terminal (Linux only)
+1. Copy all files from `bash-scripts` folder to main directory (Linux only)
+1. Run `chmod +x run.sh setup.sh` in a terminal (Linux only)
+1. Run `./setup.sh` for installing requirements
 1. Run `./run.sh` or `ruby run.rb` in a terminal
 
-## Problems
+### Updating
+
+Bot updates with every reboot but if you want you can make **hard** reboot
+
+1. Stop the bot
+1. Run `./update.sh` for **hard** update
+
+### Problems
 
 * Can't launch `run.sh`
   * Run `chmod +x run.sh` in a terminal
@@ -70,8 +75,9 @@ If you have any questions or suggestions, please come on my [Discord server](htt
 
 ### Bots
 
-* [Mee6](https://mee6.xyz) - Cool bot
-* [Flamingo](https://flambot.xyz) - The other music bot
+* [Mee6](https://mee6.xyz)
+* [Flamingo](https://flambot.xyz)
+* [RhinoBot](https://github.com/Just-Some-Bots/MusicBot)
 
 ### Monstercat
 

@@ -6,7 +6,7 @@ module Bot
       ready do |event|
         event.bot.game = CONFIG.game
         puts BOT.invite_url
-        puts 'Bot is ready!'
+        puts "Bot is ready! #{Time.now}"
       end
     end
   end
