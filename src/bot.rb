@@ -1,12 +1,14 @@
 # Gems
 require 'bundler/setup'
-require 'discordrb'
+Bundler.require
+# require 'discordrb'
 require 'json'
 # require 'mini_magick'
-require 'nokogiri'
+# require 'nokogiri'
 require 'open-uri'
 require 'yaml'
-require 'yourub'
+# require 'yourub'
+# require 'httparty'
 
 # The main bot module.
 module Bot
