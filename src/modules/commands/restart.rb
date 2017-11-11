@@ -8,9 +8,15 @@ module Bot
               help_available: false,
               description: 'Restarts and updates bot. Owner command.',
               usage: "#{BOT.prefix}restart") do |event|
-        break unless event.user.id == CONFIG.owner
+        break unless event.user.id == CONFIG.owner_id
         puts 'Restarting...'
-        event.respond ['Restarting', 'Buying more games', 'Making more tea', 'Refreshing playlists', 'Checking friend list'].sample + '...'
+        event.respond([
+          'Restarting',
+          'Buying more games',
+          'Making more tea',
+          'Refreshing playlists',
+          'Checking friend list'
+        ].sample + '...')
         BOT.stop
         exit
       end

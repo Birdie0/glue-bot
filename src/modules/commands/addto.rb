@@ -8,9 +8,7 @@ module Bot
               description: 'Adds the song to the playlist.',
               usage: "#{BOT.prefix}addto <playlist> <song name>") do |event, name, *args|
         name.downcase!
-        if !File.exist?("data/playlists/#{name}.json")
-          event << "*#{name}* playlist is not exist!"
-        else
+        if File.exist?("data/playlists/#{name}.json")
           hash = JSON.parse(File.read("data/playlists/#{name}.json"))
           if !((hash['authors'].include? event.user.id) || (hash['authors'].include? 0))
             event << 'You can\'t edit this playlist.'
@@ -28,6 +26,8 @@ module Bot
               end
             end
           end
+        else
+          event << "*#{name}* playlist is not exist!"
         end
         nil
       end

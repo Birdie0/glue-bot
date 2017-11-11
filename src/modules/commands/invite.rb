@@ -4,10 +4,9 @@ module Bot
     module Invite
       extend Discordrb::Commands::CommandContainer
       command(:invite,
-              description: 'Sends bot invite and invite to the Support-server.',
+              description: 'Sends bot invite.',
               usage: "#{BOT.prefix}invite") do |event|
-        event << "Invite link: #{BOT.invite_url}"
-        event << 'Support server -> https://discord.gg/eJcMYph'
+        event << "Invite link: <#{BOT.invite_url}>"
       end
     end
   end

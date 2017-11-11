@@ -1,7 +1,4 @@
 ---
-# Discord API client ID
-client_id:
-
 # Discord API client token
 token:
 
@@ -9,7 +6,7 @@ token:
 prefix:
 
 # ID of bot owner
-owner:
+owner_id:
 
 # game the bot is playing
 game:

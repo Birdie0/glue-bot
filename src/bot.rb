@@ -14,16 +14,17 @@ module Bot
   Dir['src/modules/*.rb'].each { |mod| load mod }
 
   # Bot configuration
-  CONFIG = OpenStruct.new YAML.load_file 'data/config.yaml'
+  CONFIG = OpenStruct.new YAML.load_file 'data/config.yml'
 
   # Create the bot.
   # The bot is created as a constant, so that you
   # can access the cache anywhere.
-  BOT = Discordrb::Commands::CommandBot.new(client_id: CONFIG.client_id,
-                                            token: CONFIG.token,
-                                            prefix: CONFIG.prefix,
-                                            fancy_log: true,
-                                            ignore_bots: true)
+  BOT = Discordrb::Commands::CommandBot.new(
+    token: CONFIG.token,
+    prefix: CONFIG.prefix,
+    webhook_commands: false,
+    ignore_bots: true
+  )
 
   # Discord commands
   module DiscordCommands; end
@@ -41,12 +42,6 @@ module Bot
 
   # Owner permission
   BOT.set_user_permission(CONFIG.owner, 999)
-
-  # Whitelist
-  File.readlines('data/whitelist.txt').map(&:chomp).each { |i| BOT.set_user_permission(i, 10) }
-
-  # Blacklist
-  File.readlines('data/blacklist.txt').map(&:chomp).each { |i| BOT.ignore_user(i) }
 
   # Bot buckets
   BOT.bucket :limit, limit: 10, time_span: 1000, delay: 60

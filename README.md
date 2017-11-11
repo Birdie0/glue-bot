@@ -47,11 +47,8 @@ It can work with other bots but I do not guarantee it. Many features have been h
 
 1. Download or clone the current repository
 1. Rename `data-template` folder to `data`
-1. Replace `token`, `clientid`, `prefix` and `owner_id` to yours
-1. Copy all files from `bash-scripts` folder to main directory (Linux only)
-1. Run `chmod +x run.sh setup.sh` in a terminal (Linux only)
-1. Run `./setup.sh` for installing requirements
-1. Run `./run.sh` or `ruby run.rb` in a terminal
+1. Replace `token`, `prefix` and `owner_id` to yours
+1. Run `rake runme` in a terminal
 
 ### Updating
 
