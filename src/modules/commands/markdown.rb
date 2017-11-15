@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Bot
   module DiscordCommands
     # Send picture with easy-to-learn Markdown basics.

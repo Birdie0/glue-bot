@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Bot
   module DiscordCommands
     # Remove song from chosen playlist.

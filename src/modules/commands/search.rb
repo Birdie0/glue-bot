@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Bot
   module DiscordCommands
     # Searches songs into chosen playlist.

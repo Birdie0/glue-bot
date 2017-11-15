@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Bot
   module DiscordCommands
     # Command for evaluating Ruby code in an active bot.

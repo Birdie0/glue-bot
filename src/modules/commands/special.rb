@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Bot
   module DiscordCommands
     #  some things
@@ -16,7 +18,7 @@ module Bot
       command(:shibe) do |event|
         event.channel.send_embed do |embed|
           embed.image = Discordrb::Webhooks::EmbedImage.new(url: HTTParty.get('http://shibe.online/api/shibes?count=1').parsed_response[0])
-          embed.footer = Discordrb::Webhooks::EmbedFooter.new(text: "random shibe from shibe.online")
+          embed.footer = Discordrb::Webhooks::EmbedFooter.new(text: 'random shibe from shibe.online')
           embed.color = rand(0..0xFFFFFF)
         end
       end
@@ -24,7 +26,7 @@ module Bot
       command(:cat) do |event|
         event.channel.send_embed do |embed|
           embed.image = Discordrb::Webhooks::EmbedImage.new(url: HTTParty.get('http://shibe.online/api/cats?count=1').parsed_response[0])
-          embed.footer = Discordrb::Webhooks::EmbedFooter.new(text: "random cat from shibe.online")
+          embed.footer = Discordrb::Webhooks::EmbedFooter.new(text: 'random cat from shibe.online')
           embed.color = rand(0..0xFFFFFF)
         end
       end
@@ -32,7 +34,7 @@ module Bot
       command(:bird) do |event|
         event.channel.send_embed do |embed|
           embed.image = Discordrb::Webhooks::EmbedImage.new(url: HTTParty.get('http://shibe.online/api/birds?count=1').parsed_response[0])
-          embed.footer = Discordrb::Webhooks::EmbedFooter.new(text: "random bird from shibe.online")
+          embed.footer = Discordrb::Webhooks::EmbedFooter.new(text: 'random bird from shibe.online')
           embed.color = rand(0..0xFFFFFF)
         end
       end
@@ -44,14 +46,14 @@ module Bot
         parsed = response.map do |i|
           {
             name_text: "#{i['name']} (Level #{i['lvl']})",
-            level_text: "#{i['xp']}/#{i['lvl_xp']} (#{i['xp_percent']}%)\nT: #{i['total_xp']} xp\nMin:#{((i['lvl_xp']-i['xp'])/25.0).ceil} Max:#{((i['lvl_xp']-i['xp'])/15.0).ceil} Avg:#{((i['lvl_xp']-i['xp'])/20.0).ceil}"
+            level_text: "#{i['xp']}/#{i['lvl_xp']} (#{i['xp_percent']}%)\nT: #{i['total_xp']} xp\nMin:#{((i['lvl_xp'] - i['xp']) / 25.0).ceil} Max:#{((i['lvl_xp'] - i['xp']) / 15.0).ceil} Avg:#{((i['lvl_xp'] - i['xp']) / 20.0).ceil}"
           }
         end
         event.channel.send_embed('') do |embed|
           embed.author = Discordrb::Webhooks::EmbedAuthor.new(
-            name: "Mee6 Leaderboard",
+            name: 'Mee6 Leaderboard',
             url: "https://mee6.xyz/levels/#{server_id}",
-            icon_url: "https://cdn.discordapp.com/emojis/230231424739835904.png"
+            icon_url: 'https://cdn.discordapp.com/emojis/230231424739835904.png'
           )
           parsed.each do |j|
             embed.add_field(

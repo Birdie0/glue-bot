@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Bot
   module DiscordEvents
     # This event is processed each time the bot succesfully connects to discord.
