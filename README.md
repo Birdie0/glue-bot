@@ -5,32 +5,43 @@ It can work with other bots but I do not guarantee it. Many features have been h
 
 ## List of commands
 
-* *Info*
-  * `about` - basic info about bot
+* Info
+  * `about` - some info about bot
   * `markdown` - Markdown tutorial
-  * `invite` - gives invite to support server
+  * `invite` - invite bot link
+  * `ping` - responds with "Pong!"
+  * `help` - commands list
 
-* *Mee6*
-  * `addto` - adds a track to chosen playlist
-  * `list` - shows available playlists
-  * `play` - adds a list of random tracks from your playlist in Mee6's command style!
-  * `show` - shows a list of random tracks from chosen playlist
+* Playlist manager
+  * `add` - adds a track to playlist
+  * `remove` - removed a track from playlist
   * `create` - creates empty playlist
-  * `search` - search songs in playlist by name
-  * `export` - generates .txt with links for Exporting to RhinoBot
+  * `list` - shows playlists
+  * `search` - searches songs in a playlist by name
+  * `show` - shows a list of tracks from playlist
+  * `play` - adds tracks to playlist of pther bot with custom prefix! Works with Mee6 and MusicBot (Add bot id to DJs)
+  * `export` - generates .txt with links for exporting to MusicBot
 
-* *Monstercat*
-  * `mcnow` - shows name of track, artist, album and album cover of song playing now on [Monstercat FM](https://twitch.tv/monstercat)
+* Monstercat
+  * `mcnow` - shows track info of current playing song on Monstercat's Twitch stream
 
-* *Comics*
-  * `xkcd` - shows random comic from [xkcd](http://xkcd.com/)
-  * `asw` - shows random comic from [a Softer World](http://www.asofterworld.com/)
-  * `nedr` - shows random comic from [Nedroid](http://nedroid.com/)
+* Comics
+  * `xkcd` - shows random [xkcd](http://xkcd.com/) comic
+  * `asw` - shows random [a Softer World](http://www.asofterworld.com/) comic
+  * `nedr` - shows random [Nedroid](http://nedroid.com/) comic
 
-* *Secret (kinda)*
-  * `eval` - eval command, very dangerous...
-  * `restart` - turns off your bot. If you launch bot with `./run.sh` it's will restarts
-  * `ping` - Responds with "Pong!" with ping
+* Pictures
+  * `shibe` - shows random shibe
+  * `cat` - shows random cat
+  * `bird` - shows random bird
+
+* Mee6
+  * `mshard` - calculates Mee6 shard by server id
+  * `meelead` - shows top 10 in Mee6's leaderboard for current server
+
+* Not public
+  * `eval` - eval command, meh...
+  * `restart` - turns off your bot. Run bot in loop (`rake runme`) to make it restart
 
 ## [Invite the bot](https://discordapp.com/oauth2/authorize?&client_id=182241887703269376&scope=bot)
 
@@ -39,30 +50,17 @@ It can work with other bots but I do not guarantee it. Many features have been h
 ### Requirements
 
 * Ruby 2.3.x+
-* Computer
-* Internet
-* `bundler` gem
 
-### Installation
+### Installation & running the bot
 
 1. Download or clone the current repository
-1. Rename `data-template` folder to `data`
-1. Replace `token`, `prefix` and `owner_id` to yours
+1. Copy `data-template` folder and rename it to `data`
+1. Fill down with needed values
 1. Run `rake runme` in a terminal
 
 ### Updating
 
-Bot updates with every reboot but if you want you can make **hard** reboot
-
-1. Stop the bot
-1. Run `./update.sh` for **hard** update
-
-### Problems
-
-* Can't launch `run.sh`
-  * Run `chmod +x run.sh` in a terminal
-* `bundle install` doesn't work
-  * Run `gem install bundler` or `gem i bundler` in a terminal
+Bot updates with every reboot, but can be run with `rake update` command
 
 ## Questions
 
@@ -73,19 +71,22 @@ If you have any questions or suggestions, please come on my [Discord server](htt
 ### Bots
 
 * [Mee6](https://mee6.xyz)
-* [Flamingo](https://flambot.xyz)
-* [RhinoBot](https://github.com/Just-Some-Bots/MusicBot)
+* [MusicBot](https://github.com/Just-Some-Bots/MusicBot)
 
 ### Monstercat
 
-* [Monstercat Tracklist](https://www.mctl.gq)
-* [Twitch channel](https://twitch.tv/monstercat)
+* [Monstercat Tracklist](https://mctl.io/)
+* [Twitch channel](https://www.twitch.tv/monstercat)
 
 ### Comics
 
 * [Xkcd](https://xkcd.com) by Randall Munroe
 * [A Softer World](http://www.asofterworld.com) by Joey Comeau and Emily Horne
 * [Nedroid](http://nedroid.com) by Anthony Clar
+
+### APIs
+
+* [shibe.online](http://shibe.online) - source of shibe, cat and bird pics
 
 ### Template
 

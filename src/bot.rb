@@ -1,16 +1,18 @@
 # frozen_string_literal: true
 
 # Gems
-require 'bundler/setup'
-Bundler.require
-# require 'discordrb'
+require 'discordrb'
+require 'httparty'
+require 'nokogiri'
+require 'sequel'
+require 'yourub'
+require 'yt'
+require 'yt/url'
+
 require 'json'
-# require 'mini_magick'
-# require 'nokogiri'
 require 'open-uri'
+require 'ostruct'
 require 'yaml'
-# require 'yourub'
-# require 'httparty'
 
 # The main bot module.
 module Bot

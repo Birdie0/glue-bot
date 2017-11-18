@@ -3,9 +3,9 @@
 module Bot
   module DiscordCommands
     # Add songs to chosen playlist.
-    module AddTo
+    module Add
       extend Discordrb::Commands::CommandContainer
-      command(:addto,
+      command(:add,
               min_args: 2,
               description: 'Adds the song to the playlist.',
               usage: "#{BOT.prefix}addto <playlist> <song name>") do |event, name, *args|
