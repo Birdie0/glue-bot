@@ -9,7 +9,7 @@ module Bot
       command(:mshard) do |event, id = event.server.id|
         n = 256 # number of shards
         @a ||= []
-        table = if a.empty?
+        table = if @a.empty?
                   'placeholder'
                 else
                   "```#{@a.join("\n")}```"
