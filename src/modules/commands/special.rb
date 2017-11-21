@@ -2,17 +2,32 @@
 
 module Bot
   module DiscordCommands
-    #  some things
+    # some things
     module Special
       extend Discordrb::Commands::CommandContainer
       # mee6 shard calculation
-      command(:mshard) do |event, id = event.server.id.to_s|
+      command(:mshard) do |event, id = event.server.id|
+        n = 256 # number of shards
+        @a ||= []
+        table = if a.empty?
+                  'placeholder'
+                else
+                  "```#{@a.join("\n")}```"
+                end
         event.channel.send_embed do |embed|
-          embed.title = "Mee6's shard. Server id:#{id}"
-          embed.description = "#{(id.to_i >> 22) % 256}/256"
-          color = embed.color = rand(0..0xFFFFFF)
-          embed.color = color
+          embed.author = Discordrb::Webhooks::EmbedAuthor.new(
+            name: "Mee6's shard. Server id: #{id}",
+            url: 'https://mee6.xyz/',
+            icon_url: 'https://cdn.discordapp.com/emojis/230231424739835904.png'
+          )
+          embed.description = "#{(id.to_i >> 22) % n}/#{n}"
+          embed.color = rand(0..0xFFFFFF)
+          embed.add_field(
+            name: 'Last 5 shard checks',
+            value: table
+          )
         end
+        @a = @a.push("#{((id.to_i >> 22) % n).to_s.rjust(3, ' ')} | #{id}").last(5)
       end
       # shibe command
       command(:shibe) do |event|

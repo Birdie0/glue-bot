@@ -13,7 +13,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - yourub gem, replaced with yt gem.
 
-## [1.0.0] - 2017-06-20
+## [1.0.1] - 2017-06-20
+
+### Added
+
+- multi_json and oj gems for some future things
+
+### Changed
+
+- better mshard command
+
+## [1.0.0] - 2017-11-18
 
 ### Added
 
