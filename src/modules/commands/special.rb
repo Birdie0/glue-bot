@@ -26,8 +26,8 @@ module Bot
             name: 'Last 5 shard checks',
             value: table
           )
+          @a = @a.push("#{((id.to_i >> 22) % n).to_s.rjust(3, ' ')} | #{id}").last(5)
         end
-        @a = @a.push("#{((id.to_i >> 22) % n).to_s.rjust(3, ' ')} | #{id}").last(5)
       end
       # shibe command
       command(:shibe) do |event|
