@@ -61,12 +61,12 @@ module Bot
         server_id = event.server.id
         link = "https://mee6.xyz/levels/#{server_id}?json=1&limit=0"
         response = HTTParty.get(link).parsed_response['reward_roles']
-        response = response.sort_by { |key, value| key.to_i }
-        description = ''
+        response = response.sort_by { |key, _value| key.to_i }
+        description = []
         response.map do |i, j|
-          description << "**Level #{i}**\n"
+          description << "**Level #{i}**"
           j.map do |k|
-            description << "  #{k['name']} <@&#{k['id']}>\n"
+            description << "  #{k['name']} <@&#{k['id']}>"
           end
         end
         event.channel.send_embed('') do |embed|
@@ -75,7 +75,7 @@ module Bot
             url: "https://mee6.xyz/levels/#{server_id}",
             icon_url: 'https://cdn.discordapp.com/emojis/230231424739835904.png'
           )
-          embed.description = description
+          embed.description = description.join("\n")
           embed.colour = rand(0..0xffffff)
         end
       end
