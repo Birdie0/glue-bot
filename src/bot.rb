@@ -1,13 +1,7 @@
 # frozen_string_literal: true
 
 # Gems
-require 'discordrb'
-require 'httparty'
-require 'nokogiri'
-require 'sequel'
-require 'yourub'
-require 'yt'
-require 'yt/url'
+Bundler.require
 
 require 'json'
 require 'open-uri'

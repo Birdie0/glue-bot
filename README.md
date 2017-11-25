@@ -1,8 +1,5 @@
 # glue-bot
 
-This is a bot for Discord with some nice features! The basic idea of the creation of this bot is making an easy multi-add function for the [Mee6 bot](http://mee6.xyz), [Flamingo](https://flambot.xyz), other music bots(?) and tracking music from *Monstercat FM*.
-It can work with other bots but I do not guarantee it. Many features have been here such a spam, message animation and others but stays the most stabile and less ratelimit causing. They are back. Maybe... In a distant future...
-
 ## List of commands
 
 * Info

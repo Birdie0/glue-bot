@@ -5,7 +5,7 @@ task default: :run
 desc 'install requirements'
 task :install do
   sh 'gem install bundler --conservative'
-  sh 'bundle check || bundle install'
+  sh 'bundle update'
 end
 
 desc 'update from github repo'
@@ -20,7 +20,9 @@ end
 
 desc 'run bot cycle'
 task :runme do
-  Rake::Task['update'].invoke
-  Rake::Task['install'].invoke
-  Rake::Task['run'].invoke
+  loop do
+    Rake::Task['update'].invoke
+    Rake::Task['install'].invoke
+    Rake::Task['run'].invoke
+  end
 end
