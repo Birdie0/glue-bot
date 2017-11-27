@@ -33,6 +33,3 @@ Metrics/PerceivedComplexity:
 Security/Eval:
   Enabled: false
 
-# Disable warning about error class.
-Lint/RescueWithoutErrorClass:
-  Enabled: true

@@ -11,7 +11,7 @@ module Bot
         break unless event.user.id == CONFIG.owner_id
         begin
           eval code.join(' ')
-        rescue => e
+        rescue StandardError => e
           event.send_temp("```#{e}```", 15)
         end
       end

@@ -10,11 +10,12 @@ gem 'nokogiri'
 gem 'oj'
 gem 'sequel'
 gem 'sqlite3'
+gem 'xkcd'
 gem 'yourub'
 gem 'yt'
 gem 'yt-url'
 
 group :development do
-  gem 'pry'
-  gem 'rubocop'
+  gem 'pry', require: false
+  gem 'rubocop', require: false
 end
