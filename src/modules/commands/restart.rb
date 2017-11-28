@@ -19,8 +19,8 @@ module Bot
           'Refreshing playlists',
           'Checking friend list'
         ].sample + '...')
-        BOT.stop
         exit
+        event.bot.stop
       end
     end
   end
