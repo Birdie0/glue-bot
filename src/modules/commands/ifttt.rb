@@ -9,9 +9,9 @@ module Bot
       extend Discordrb::Commands::CommandContainer
       command(:jbeauty, help_available: false) do |event|
         body = event.message.content.match(/```json\n(?<body>(\n|.)*)```/)
-        if body && body['body']
+        if body
           begin
-            event << "```json\n#{MultiJson.dump(MultiJson.load(body), pretty: true)}```"
+            event << "```json\n#{MultiJson.dump(MultiJson.load(body['body']), pretty: true)}```"
           rescue MultiJson::ParseError => e
             match = e.cause.to_s.match(/line (?<line>\d+), column (?<column>\d+)/)
             reason = e.data.to_s.split("\n").insert(match['line'].to_i, '^'.rjust(match['column'].to_i, ' ')).join("\n")
