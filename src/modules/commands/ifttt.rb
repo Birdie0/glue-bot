@@ -18,7 +18,7 @@ module Bot
             event << "```rb\n#{reason}``````rb\n#{e.cause}```"
           end
         else
-          event << "Make sure you put json body between \`\`\`json \`\`\`"
+          event << "Make sure you put json body between \\`\\`\\`json \\`\\`\\`"
         end
       end
     end
