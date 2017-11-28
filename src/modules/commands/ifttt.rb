@@ -8,8 +8,8 @@ module Bot
     module Ifttt
       extend Discordrb::Commands::CommandContainer
       command(:jbeauty, help_available: false) do |event|
-        body = event.message.content.match(/```json\n(?<body>(\n|.)*)```/)['body']
-        if body
+        body = event.message.content.match(/```json\n(?<body>(\n|.)*)```/)
+        if body['body']
           begin
             event << "```json\n#{MultiJson.dump(MultiJson.load(body), pretty: true)}```"
           rescue MultiJson::ParseError => e
