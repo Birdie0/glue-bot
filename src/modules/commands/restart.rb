@@ -2,8 +2,8 @@
 
 module Bot
   module DiscordCommands
-    # Turns off your bot.
-    # If you launch bot with `./run.sh` it's will restarts.
+    # Sends bot sleep.
+    # If you launch bot with `rake runme`, it will restart.
     module Restart
       extend Discordrb::Commands::CommandContainer
       command(:restart,

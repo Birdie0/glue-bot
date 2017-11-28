@@ -2,7 +2,7 @@
 
 module Bot
   module DiscordCommands
-    # Current *playing now* from `Monstercat.FM`.
+    # Shows current *playing now* song on `Monstercat.FM`.
     module MCNow
       extend Discordrb::Commands::CommandContainer
       command(:mcnow,

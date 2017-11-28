@@ -2,7 +2,7 @@
 
 module Bot
   module DiscordCommands
-    # Show music names from pre-generated playlists.
+    # Shows track names from pre-generated playlists.
     module Show
       extend Discordrb::Commands::CommandContainer
       command(:show,

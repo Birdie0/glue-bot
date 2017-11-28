@@ -2,7 +2,7 @@
 
 module Bot
   module DiscordCommands
-    # Add songs to chosen playlist.
+    # Add song to chosen playlist.
     module Add
       extend Discordrb::Commands::CommandContainer
       command(:add,

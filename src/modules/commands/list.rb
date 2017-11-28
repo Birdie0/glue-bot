@@ -2,7 +2,7 @@
 
 module Bot
   module DiscordCommands
-    # Show list of playlists.
+    # Shows list of playlists.
     module List
       extend Discordrb::Commands::CommandContainer
       command(:list,

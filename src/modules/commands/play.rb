@@ -2,9 +2,8 @@
 
 module Bot
   module DiscordCommands
-    # Add music request from pre-generated playlists.
+    # Adds music request from pre-generated playlists.
     # Max 8 songs for one request.
-    ### 13-14 > bucket: :limit
     module Play
       extend Discordrb::Commands::CommandContainer
       command(:play,

@@ -2,7 +2,7 @@
 
 module Bot
   module DiscordCommands
-    # Remove song from chosen playlist.
+    # Removes song from chosen playlist.
     module Remove
       extend Discordrb::Commands::CommandContainer
       command(:remove,

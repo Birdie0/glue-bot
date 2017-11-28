@@ -19,3 +19,5 @@ module Bot
     end
   end
 end
+
+# TODO: replace with xkcd gem

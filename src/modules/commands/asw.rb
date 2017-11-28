@@ -2,7 +2,7 @@
 
 module Bot
   module DiscordCommands
-    #  shows random comic from a Softer World.
+    # Shows random comic from a Softer World.
     module SofterWorld
       extend Discordrb::Commands::CommandContainer
       command(:asw,

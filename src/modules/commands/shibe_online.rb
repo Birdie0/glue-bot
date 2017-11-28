@@ -2,8 +2,8 @@
 
 module Bot
   module DiscordCommands
-    # some things
-    module Special
+    # Getting animal pics using shibe.online api <3
+    module ShibeOnline
       extend Discordrb::Commands::CommandContainer
       # shibe command
       command(:shibe) do |event|

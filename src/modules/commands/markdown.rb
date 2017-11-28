@@ -2,7 +2,7 @@
 
 module Bot
   module DiscordCommands
-    # Send picture with easy-to-learn Markdown basics.
+    # Sends picture with easy-to-learn Markdown basics.
     module Markdown
       extend Discordrb::Commands::CommandContainer
       command(:markdown,

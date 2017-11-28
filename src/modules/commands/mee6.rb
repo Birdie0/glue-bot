@@ -2,7 +2,7 @@
 
 module Bot
   module DiscordCommands
-    # some things
+    # Some commands written for Mee6
     module Mee6
       extend Discordrb::Commands::CommandContainer
       # mee6 shard calculation
