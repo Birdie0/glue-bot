@@ -10,6 +10,7 @@ end
 
 desc 'update from github repo'
 task :update do
+  sh 'git stash'
   sh 'git pull'
 end
 
@@ -18,11 +19,11 @@ task :run do
   sh 'bundle exec ruby run.rb'
 end
 
-desc 'run bot cycle'
+desc 'run bot in loop'
 task :runme do
   loop do
-    Rake::Task['update'].invoke
-    Rake::Task['install'].invoke
-    Rake::Task['run'].invoke
+    Rake::Task['update'].execute
+    Rake::Task['install'].execute
+    Rake::Task['run'].execute
   end
 end

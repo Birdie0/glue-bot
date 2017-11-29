@@ -53,6 +53,9 @@ module Bot
               log_level: 3 }
   YT_CLIENT = Yourub::Client.new(options)
 
+  # Redis client
+  REDIS = Redis.new
+
   # Run the bot
   BOT.run
 end
