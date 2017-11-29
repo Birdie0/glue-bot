@@ -7,6 +7,8 @@ module Bot
     # can use this command.
     module Ifttt
       extend Discordrb::Commands::CommandContainer
+
+      # desc
       command(:jbeauty, help_available: false) do |event|
         body = event.message.content.match(/```json\n(?<body>(\n|.)*)```/)
         if body
@@ -15,10 +17,42 @@ module Bot
           rescue MultiJson::ParseError => e
             match = e.cause.to_s.match(/line (?<line>\d+), column (?<column>\d+)/)
             reason = e.data.to_s.split("\n").insert(match['line'].to_i, '^'.rjust(match['column'].to_i, ' ')).join("\n")
+            event << "```rb\n#{reason}``````fix\n#{e.cause}```"
+          end
+        else
+          event << 'Make sure you put json body between \\`\\`\\`json \\`\\`\\`'
+        end
+      end
+
+      # desc
+      command(:jtest, help_available: false) do |event|
+        body = event.message.content.match(/```json\n(?<body>(\n|.)*)```/)
+        if body
+          begin
+            event << "```(json)?\n#{MultiJson.dump(MultiJson.load(body['body']), pretty: true)}```"
+          rescue MultiJson::ParseError => e
+            match = e.cause.to_s.match(/line (?<line>\d+), column (?<column>\d+)/)
+            reason = e.data.to_s.split("\n").insert(match['line'].to_i, '^'.rjust(match['column'].to_i, ' ')).join("\n")
+            event << "```rb\n#{reason}``````fix\n#{e.cause}```"
+          end
+        else
+          event << 'Make sure you put json body between \\`\\`\\`json \\`\\`\\`'
+        end
+      end
+
+      # desc
+      command(:jwebhook, help_available: false) do |event|
+        body = event.message.content.match(/```json\n(?<body>(\n|.)*)```/)
+        if body
+          begin
+            event << "```(json)?\n#{MultiJson.dump(MultiJson.load(body['body']), pretty: true)}```"
+          rescue MultiJson::ParseError => e
+            match = e.cause.to_s.match(/line (?<line>\d+), column (?<column>\d+)/)
+            reason = e.data.to_s.split("\n").insert(match['line'].to_i, '^'.rjust(match['column'].to_i, ' ')).join("\n")
             event << "```rb\n#{reason}``````rb\n#{e.cause}```"
           end
         else
-          event << "Make sure you put json body between \\`\\`\\`json \\`\\`\\`"
+          event << 'Make sure you put json body between \\`\\`\\`json \\`\\`\\`'
         end
       end
     end

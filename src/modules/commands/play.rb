@@ -6,6 +6,7 @@ module Bot
     # Max 8 songs for one request.
     module Play
       extend Discordrb::Commands::CommandContainer
+
       command(:play,
               min_args: 1,
               max_args: 3,
@@ -28,6 +29,7 @@ module Bot
         end
         nil
       end
+
     end
   end
 end

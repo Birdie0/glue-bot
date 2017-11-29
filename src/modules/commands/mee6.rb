@@ -5,6 +5,7 @@ module Bot
     # Some commands written for Mee6
     module Mee6
       extend Discordrb::Commands::CommandContainer
+
       # mee6 shard calculation
       command(:mshard) do |event, id = event.server.id|
         n = 256 # number of shards
@@ -29,6 +30,7 @@ module Bot
           @a = @a.push("#{((id.to_i >> 22) % n).to_s.rjust(3, ' ')} | #{id}").last(5)
         end
       end
+
       # mee6 leaderboard command
       command(:meelead) do |event|
         server_id = event.server.id
@@ -56,6 +58,7 @@ module Bot
           embed.colour = rand(0..0xffffff)
         end
       end
+
       # mee6 leaderboard command
       command(:meeroles) do |event|
         server_id = event.server.id
@@ -79,6 +82,7 @@ module Bot
           embed.colour = rand(0..0xffffff)
         end
       end
+
     end
   end
 end

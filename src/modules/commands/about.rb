@@ -5,14 +5,17 @@ module Bot
     # Basic info about bot.
     module About
       extend Discordrb::Commands::CommandContainer
+
       command(:about,
-              description: 'Some information about the bot.',
-              usage: "#{BOT.prefix}about") do |event|
+              description: 'Info about the bot',
+              usage: "#{event.bot.prefix}about") do |event|
         event << "Hello! I'm glue-bot."
-        event << "I have some cool features, just type `#{BOT.prefix}help` and i will tell you ;)"
-        event << "I'm created by #{event.bot.user(127_405_523_598_311_424).name}"
-        event << 'using discordrb (Ruby), :clock2: and :heart:'
+        event << 'The reason I was made was doing playlist work for Mee6, but now I can do even more!'
+        event << "My prefix is `#{event.bot.prefix}` and my help command is `#{event.bot.prefix}help`"
+        event << "I was created by #{event.bot.user(127_405_523_598_311_424).name}"
+        event << 'using discordrb <:ruby_taco:336115106670968833>, :clock2: and :heart:'
       end
+
     end
   end
 end

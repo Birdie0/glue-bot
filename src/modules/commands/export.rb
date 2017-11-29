@@ -3,6 +3,7 @@ module Bot
     # Exports playlist to txt file.
     module Export
       extend Discordrb::Commands::CommandContainer
+
       command(:export,
               min_args: 1,
               description: 'Exports playlist to txt file.',
@@ -21,6 +22,7 @@ module Bot
         end
         nil
       end
+
     end
   end
 end

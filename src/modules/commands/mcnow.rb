@@ -5,6 +5,7 @@ module Bot
     # Shows current *playing now* song on `Monstercat.FM`.
     module MCNow
       extend Discordrb::Commands::CommandContainer
+
       command(:mcnow,
               description: 'Shows information of the currently playing song on Monstercat FM',
               usage: "#{BOT.prefix}mcnow") do |event|
@@ -18,6 +19,7 @@ module Bot
           embed.color = rand(0..0xFFFFFF)
         end
       end
+
     end
   end
 end

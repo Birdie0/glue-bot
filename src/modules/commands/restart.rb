@@ -6,6 +6,7 @@ module Bot
     # If you launch bot with `rake runme`, it will restart.
     module Restart
       extend Discordrb::Commands::CommandContainer
+
       command(:restart,
               help_available: false,
               description: 'Restarts and updates bot. Owner command.',
@@ -22,6 +23,7 @@ module Bot
         event.bot.stop
         # exit
       end
+
     end
   end
 end

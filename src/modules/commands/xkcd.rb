@@ -5,6 +5,7 @@ module Bot
     # Sends random comic from xkcd.com .
     module Xkcd
       extend Discordrb::Commands::CommandContainer
+
       command(:xkcd,
               description: 'Sends a random comic from <https://xkcd.com>',
               usage: "#{BOT.prefix}xkcd") do |event|
@@ -16,6 +17,7 @@ module Bot
           embed.color = [0xB6C114, 0x60C114, 0x14C11F, 0x14C75, 0x14B6C1, 0x1460C1].sample
         end
       end
+
     end
   end
 end

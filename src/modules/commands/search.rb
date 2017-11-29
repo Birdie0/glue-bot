@@ -5,6 +5,7 @@ module Bot
     # Searches songs into chosen playlist.
     module Search
       extend Discordrb::Commands::CommandContainer
+
       command(:search,
               min_args: 2,
               description: 'Searches query into chosen playlist.',
@@ -26,6 +27,7 @@ module Bot
           event << '```'
         end
       end
+
     end
   end
 end

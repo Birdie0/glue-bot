@@ -5,6 +5,7 @@ module Bot
     # Creates empty playlist.
     module Create
       extend Discordrb::Commands::CommandContainer
+
       command(:create,
               max_args: 1,
               description: 'Creates a new playlist',
@@ -20,6 +21,7 @@ module Bot
         end
         nil
       end
+
     end
   end
 end

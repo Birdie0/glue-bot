@@ -5,6 +5,7 @@ module Bot
     # Removes song from chosen playlist.
     module Remove
       extend Discordrb::Commands::CommandContainer
+
       command(:remove,
               min_args: 2,
               description: 'Removes song from the playlist.',
@@ -32,6 +33,7 @@ module Bot
         end
         nil
       end
+
     end
   end
 end

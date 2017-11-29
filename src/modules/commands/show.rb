@@ -5,6 +5,7 @@ module Bot
     # Shows track names from pre-generated playlists.
     module Show
       extend Discordrb::Commands::CommandContainer
+
       command(:show,
               min_args: 1,
               description: 'Shows titles from the playlist.',
@@ -23,6 +24,7 @@ module Bot
           event << '```'
         end
       end
+
     end
   end
 end

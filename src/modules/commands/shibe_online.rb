@@ -5,6 +5,7 @@ module Bot
     # Getting animal pics using shibe.online api <3
     module ShibeOnline
       extend Discordrb::Commands::CommandContainer
+
       # shibe command
       command(:shibe) do |event|
         event.channel.send_embed do |embed|
@@ -13,6 +14,7 @@ module Bot
           embed.color = rand(0..0xFFFFFF)
         end
       end
+
       # bird command
       command(:cat) do |event|
         event.channel.send_embed do |embed|
@@ -21,6 +23,7 @@ module Bot
           embed.color = rand(0..0xFFFFFF)
         end
       end
+
       # bird command
       command(:bird) do |event|
         event.channel.send_embed do |embed|
@@ -29,6 +32,7 @@ module Bot
           embed.color = rand(0..0xFFFFFF)
         end
       end
+
     end
   end
 end

@@ -5,6 +5,7 @@ module Bot
     # Add song to chosen playlist.
     module Add
       extend Discordrb::Commands::CommandContainer
+
       command(:add,
               min_args: 2,
               description: 'Adds the song to the playlist.',
@@ -33,6 +34,7 @@ module Bot
         end
         nil
       end
+
     end
   end
 end

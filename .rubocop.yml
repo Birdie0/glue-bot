@@ -33,3 +33,6 @@ Metrics/PerceivedComplexity:
 Security/Eval:
   Enabled: false
 
+# Disable message about empty lines in the emd of module
+Layout/EmptyLinesAroundModuleBody:
+  Enabled: false

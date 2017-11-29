@@ -5,6 +5,7 @@ module Bot
     # Shows list of playlists.
     module List
       extend Discordrb::Commands::CommandContainer
+
       command(:list,
               description: 'Shows a list of all existing playlists.',
               usage: "#{BOT.prefix}list") do |event|
@@ -16,6 +17,7 @@ module Bot
         Dir['data/playlists/*.json'].each { |i| event << "   ├─#{File.basename(i, '.json')}.pls" }
         event << '   └─backup.zip```'
       end
+
     end
   end
 end

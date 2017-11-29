@@ -7,6 +7,8 @@ module Bot
     # can use this command.
     module Eval
       extend Discordrb::Commands::CommandContainer
+
+      # eval command
       command(:eval, help_available: false) do |event, *code|
         break unless event.user.id == CONFIG.owner_id
         begin
@@ -15,7 +17,9 @@ module Bot
           event.send_temp("```#{e}```", 15)
         end
       end
-      command(:eval2, help_available: false) do |event|
+
+      # better eval command
+      command(:eval2, help_available: false) do |event| # TODO: unite eval commands into one
         break unless event.user.id == CONFIG.owner_id
         code = event.message.content.match(/```(rb|ruby)\n(?<code>(\n|.)*)```/)['code']
         begin
@@ -24,6 +28,7 @@ module Bot
           event.send_temp("```#{e}```" + "```#{e.backtrace.join('\n')}```", 15)
         end
       end
+
     end
   end
 end
