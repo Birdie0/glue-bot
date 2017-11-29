@@ -36,13 +36,13 @@ module Bot
 
       # delete key
       command(:delkey) do |event|
-        REDIS.del("maker_key:#{event.user.id}") == 'OK'
-          event << 'Done!'
+        REDIS.del("maker_key:#{event.user.id}")
+        event << 'Done!'
       end
 
       # set webhook url
       command(:seturl, min_args: 1) do |event, url|
-        if url =~ /https:\/\/discordapp.com\/api\/webhooks\/.+/ and HTTParty.get(url).code == 200
+        if url =~ %r{https:\/\/discordapp.com\/api\/webhooks\/.+} && (HTTParty.get(url).code == 200)
           if REDIS.set("webhook_url:#{event.user.id}", url) == 'OK'
             event << 'Webhook url has been saved! Now you can send webhook requests using `webhook` command.'
             event << 'If you want to remove key send `delurl` command to remove your key from storage.'
@@ -61,7 +61,7 @@ module Bot
       end
 
       command(:send, min_args: 1, description: 'sends request on `event` with variables separated by pipes `|`',
-              usage: "#{CONFIG.prefix}send <event> [[value1]|[value2]|[value3]]") do |event, event_name, *options|
+                     usage: "#{CONFIG.prefix}send <event> [[value1]|[value2]|[value3]]") do |event, event_name, *options|
         maker_key = REDIS.get "maker_key:#{event.user.id}"
         if key
           if event_name =~ /[A-Za-z\-_]+/
@@ -81,7 +81,6 @@ module Bot
             event << 'Invalid event name.'
             event << 'Good: `test`, `click`, `tweet_test`'
             event << 'Bad: `aaa bbb`, `!_aaaa!!!!`'
-          end
           end
         else
           event << 'Maker key is missing!'
