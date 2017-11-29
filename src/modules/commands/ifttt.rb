@@ -96,7 +96,7 @@ module Bot
           body = event.message.content.match(/```.*\n(?<body>(\n|.)*)```/)
           if body
             begin
-              response = HTTParty.post(url, body: MultiJson.load(body['body']))
+              response = HTTParty.post(url, body: body['body'])
               event.channel.send_embed do |embed|
                 if response.code == 204
                   embed.color = 0x1ad413
