@@ -8,7 +8,7 @@ module Bot
 
       command(:about,
               description: 'Info about the bot',
-              usage: "#{event.bot.prefix}about") do |event|
+              usage: "#{BOT.prefix}about") do |event|
         event << "Hello! I'm glue-bot."
         event << 'The reason I was made was doing playlist work for Mee6, but now I can do even more!'
         event << "My prefix is `#{event.bot.prefix}` and my help command is `#{event.bot.prefix}help`"
