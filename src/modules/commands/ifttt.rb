@@ -42,7 +42,7 @@ module Bot
 
       # set webhook url
       command(:seturl, min_args: 1) do |event, url|
-        if url =~ %r{https:\/\/((canary|ptb).)?discordapp\.com\/api\/webhooks\/[1-9]+\/[0-9a-zA-Z-_]+} && (HTTParty.get(url).code == 200)
+        if url =~ %r{https:\/\/((canary|ptb).)?discordapp\.com\/api\/webhooks\/\d+\/[0-9a-zA-Z-_]+} && (HTTParty.get(url).code == 200)
           if REDIS.set("webhook_url:#{event.user.id}", url) == 'OK'
             event << 'Webhook url has been saved! Now you can send webhook requests using `webhook` command.'
             event << 'If you want to remove key send `delurl` command to remove your key from storage.'
