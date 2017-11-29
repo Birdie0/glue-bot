@@ -10,10 +10,10 @@ module Bot
 
       # json beautify
       command(:jbeauty) do |event|
-        body = event.message.content.match(/```json\n(?<body>(\n|.)*)```/)
+        body = event.message.content.match(/```.*\n(?<body>(\n|.)*)```/)
         if body
           begin
-            event << "```.*\n#{MultiJson.dump(MultiJson.load(body['body']), pretty: true)}```"
+            event << "```json\n#{MultiJson.dump(MultiJson.load(body['body']), pretty: true)}```"
           rescue MultiJson::ParseError => e
             match = e.cause.to_s.match(/line (?<line>\d+), column (?<column>\d+)/)
             reason = e.data.to_s.split("\n").insert(match['line'].to_i, '^'.rjust(match['column'].to_i, ' ')).join("\n")
