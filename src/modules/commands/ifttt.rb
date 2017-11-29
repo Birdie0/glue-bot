@@ -63,7 +63,7 @@ module Bot
       command(:send, min_args: 1, description: 'sends request on `event` with variables separated by pipes `|`',
                      usage: "#{CONFIG.prefix}send <event> [[value1]|[value2]|[value3]]") do |event, event_name, *options|
         maker_key = REDIS.get "maker_key:#{event.user.id}"
-        if key
+        if maker_key
           if event_name =~ /[A-Za-z\-_]+/
             options = options.join(' ').split('|')
             params = { value1: options[0], value2: options[1], value3: options[2] }
@@ -98,7 +98,7 @@ module Bot
             begin
               response = HTTParty.post(url, body: MultiJson.load(body['body']))
               event.channel.send_embed do |embed|
-                if response.code == 200
+                if response.code == 204
                   embed.color = 0x1ad413
                   embed.title = 'Success!'
                 else
