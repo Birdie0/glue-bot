@@ -47,6 +47,7 @@
 ### Requirements
 
 * Ruby 2.3.x+
+* Redis
 
 ### Installation & running the bot
 
