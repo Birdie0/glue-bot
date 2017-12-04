@@ -5,15 +5,14 @@ token:
 # Command prefix
 prefix:
 
-# ID of bot owner
+# Bot owner's ID
 owner_id:
 
-# game the bot is playing
+# Bot's playing status
 game:
 
 # Youtube API client key
 youtube_key:
 
-# Server & Channel IDs
-server_id:
+# Music logs Channel ID
 channel_id:
