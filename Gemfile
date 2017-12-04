@@ -10,7 +10,7 @@ gem 'nokogiri'
 gem 'oj'
 gem 'redis'
 gem 'sequel'
-gem 'sqlite3'
+gem 'sqlite3', require: false
 gem 'xkcd'
 gem 'yourub'
 gem 'yt'

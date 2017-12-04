@@ -28,6 +28,7 @@ module Bot
 
   # Discord commands
   module DiscordCommands; end
+
   Dir['src/modules/commands/*.rb'].each { |mod| load mod }
   DiscordCommands.constants.each do |mod|
     BOT.include! DiscordCommands.const_get mod
@@ -35,6 +36,7 @@ module Bot
 
   # Discord events
   module DiscordEvents; end
+
   Dir['src/modules/events/*.rb'].each { |mod| load mod }
   DiscordEvents.constants.each do |mod|
     BOT.include! DiscordEvents.const_get mod
@@ -47,11 +49,15 @@ module Bot
   BOT.bucket :limit, limit: 10, time_span: 1000, delay: 60
 
   # Youtube client
-  options = { developer_key: CONFIG.youtube_key,
-              application_name: 'yourub',
-              application_version: 2.0,
-              log_level: 3 }
-  YT_CLIENT = Yourub::Client.new(options)
+  YT_CLIENT = Yourub::Client.new(
+    developer_key: CONFIG.youtube_key,
+    application_name: 'yourub',
+    application_version: 2.0,
+    log_level: 3
+  )
+
+  # Database
+  # DB = Sequel.sqlite('bot.db')
 
   # Redis client
   REDIS = Redis.new
