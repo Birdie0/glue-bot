@@ -16,7 +16,7 @@ module Bot
             event << "```json\n#{MultiJson.dump(MultiJson.load(body['body']), pretty: true)}```"
           rescue MultiJson::ParseError => e
             match = e.cause.to_s.match(/line (?<line>\d+), column (?<column>\d+)/)
-            reason = e.data.to_s.split("\n").insert(match['line'].to_i, '^'.rjust(match['column'].to_i, ' ')).join("\n")
+            reason = e.data.to_s.split("\n").insert(match['line'].to_i, '^'.rjust(match['column'].to_i, '_')).slice(match['line'].to_i - 3 > 0 ? match['line'].to_i - 3 : 0, 6).join("\n")
             event << "```rb\n#{reason}``````fix\n#{e.cause}```"
           end
         else

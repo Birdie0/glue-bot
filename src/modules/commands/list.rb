@@ -14,8 +14,9 @@ module Bot
         event << "║          [#{BOT.prefix}show <playlist> <page>] - shows playlist"
         event << '╚═💿 Music'
         event << '   │'
-        Dir['data/playlists/*.json'].each { |i| event << "   ├─#{File.basename(i, '.json')}.pls" }
-        event << '   └─backup.zip```'
+        playlists = Dir['data/playlists/*.json']
+        playlists[0...-1].each { |i| event << "   ├─#{File.basename(i, '.json')}.pls" }
+        event << "   └─#{File.basename(playlists.last, '.json')}.pls```"
       end
 
     end

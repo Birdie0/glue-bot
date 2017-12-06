@@ -62,6 +62,9 @@ module Bot
   # Redis client
   REDIS = Redis.new
 
+  # Rufus scheduler
+  SCHEDULER = Rufus::Scheduler.new
+
   # Run the bot
   BOT.run
 end

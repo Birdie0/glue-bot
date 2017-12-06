@@ -9,6 +9,7 @@ gem 'multi_json'
 gem 'nokogiri'
 gem 'oj'
 gem 'redis'
+gem 'rufus-scheduler'
 gem 'sequel'
 gem 'sqlite3', require: false
 gem 'xkcd'
