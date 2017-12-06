@@ -31,7 +31,7 @@ module Bot
   REDIS = Redis.new
 
   # Rufus scheduler
-  SCHEDULER = Rufus::Scheduler.new
+  # SCHEDULER = Rufus::Scheduler.new
 
   # Create the bot.
   # The bot is created as a constant, so that you
@@ -66,9 +66,9 @@ module Bot
   BOT.bucket :limit, limit: 10, time_span: 1000, delay: 60
 
   # Run the bot
-  BOT.run :async
+  BOT.run #:async
 
-  SCHEDULER.join
+  # SCHEDULER.join
 
-  BOT.sync
+  # BOT.sync
 end
