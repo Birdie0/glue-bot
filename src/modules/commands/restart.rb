@@ -22,8 +22,8 @@ module Bot
           'Refreshing playlists',
           'Checking friend list'
         ].sample + '...')
-          BOT.stop
-          exit
+        BOT.stop
+        exit
       end
 
     end

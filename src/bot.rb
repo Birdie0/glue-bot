@@ -10,7 +10,7 @@ require 'yaml'
 
 # The main bot module.
 module Bot
-  # Load non-Discordrb modules
+  # Load non-discordrb modules
   Dir['src/modules/*.rb'].each { |mod| load mod }
 
   # Bot configuration
@@ -25,17 +25,15 @@ module Bot
   )
 
   # Database
-  # DB = Sequel.sqlite('bot.db')
+  # DB = Sequel.sqlite('data/bot.db')
 
   # Redis client
   REDIS = Redis.new
 
   # Rufus scheduler
-  # SCHEDULER = Rufus::Scheduler.new
+  SCHEDULER = Rufus::Scheduler.new
 
-  # Create the bot.
-  # The bot is created as a constant, so that you
-  # can access the cache anywhere.
+  # Create the bot
   BOT = Discordrb::Commands::CommandBot.new(
     token: CONFIG.token,
     prefix: CONFIG.prefix,
@@ -66,9 +64,5 @@ module Bot
   BOT.bucket :limit, limit: 10, time_span: 1000, delay: 60
 
   # Run the bot
-  BOT.run #:async
-
-  # SCHEDULER.join
-
-  # BOT.sync
+  BOT.run
 end
