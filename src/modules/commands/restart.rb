@@ -21,8 +21,11 @@ module Bot
           'Refreshing playlists',
           'Checking friend list'
         ].sample + '...')
-        event.bot.stop
-        # exit
+        begin
+          BOT.stop
+        rescue ThreadError
+          exit
+        end
       end
 
     end
