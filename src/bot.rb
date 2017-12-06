@@ -13,6 +13,9 @@ module Bot
   # Load non-Discordrb modules
   Dir['src/modules/*.rb'].each { |mod| load mod }
 
+  # Bot configuration
+  CONFIG = OpenStruct.new YAML.load_file 'data/config.yml'
+
   # Youtube client
   YT_CLIENT = Yourub::Client.new(
     developer_key: CONFIG.youtube_key,
@@ -29,9 +32,6 @@ module Bot
 
   # Rufus scheduler
   SCHEDULER = Rufus::Scheduler.new
-
-  # Bot configuration
-  CONFIG = OpenStruct.new YAML.load_file 'data/config.yml'
 
   # Create the bot.
   # The bot is created as a constant, so that you
