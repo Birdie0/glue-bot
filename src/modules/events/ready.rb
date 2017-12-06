@@ -10,6 +10,8 @@ module Bot
         event.bot.game = CONFIG.game
         puts BOT.invite_url
         puts "Bot is ready! #{Time.now}"
+        event.bot.channel(REDIS.get('last_channel')).send("I'm back!") if REDIS.get('last_channel')
+        REDIS.del('last_channel')
       end
 
     end

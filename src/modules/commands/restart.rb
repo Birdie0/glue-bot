@@ -13,6 +13,7 @@ module Bot
               usage: "#{BOT.prefix}restart") do |event|
         break unless event.user.id == CONFIG.owner_id
         puts 'Restarting...'
+        REDIS.set('last_channel', event.channel.id)
         event.respond([
           'Restarting',
           'Buying more games',

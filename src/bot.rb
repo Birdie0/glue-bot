@@ -13,6 +13,23 @@ module Bot
   # Load non-Discordrb modules
   Dir['src/modules/*.rb'].each { |mod| load mod }
 
+  # Youtube client
+  YT_CLIENT = Yourub::Client.new(
+    developer_key: CONFIG.youtube_key,
+    application_name: 'yourub',
+    application_version: 2.0,
+    log_level: 3
+  )
+
+  # Database
+  # DB = Sequel.sqlite('bot.db')
+
+  # Redis client
+  REDIS = Redis.new
+
+  # Rufus scheduler
+  SCHEDULER = Rufus::Scheduler.new
+
   # Bot configuration
   CONFIG = OpenStruct.new YAML.load_file 'data/config.yml'
 
@@ -48,23 +65,10 @@ module Bot
   # Bot buckets
   BOT.bucket :limit, limit: 10, time_span: 1000, delay: 60
 
-  # Youtube client
-  YT_CLIENT = Yourub::Client.new(
-    developer_key: CONFIG.youtube_key,
-    application_name: 'yourub',
-    application_version: 2.0,
-    log_level: 3
-  )
-
-  # Database
-  # DB = Sequel.sqlite('bot.db')
-
-  # Redis client
-  REDIS = Redis.new
-
-  # Rufus scheduler
-  SCHEDULER = Rufus::Scheduler.new
-
   # Run the bot
-  BOT.run
+  BOT.run :async
+
+  SCHEDULER.join
+
+  BOT.sync
 end
