@@ -14,6 +14,7 @@ module Bot
         break unless event.user.id == CONFIG.owner_id
         puts 'Restarting...'
         REDIS.set('last_channel', event.channel.id)
+        SCHEDULER.shutdown
         event.respond([
           'Restarting',
           'Buying more games',
@@ -21,11 +22,8 @@ module Bot
           'Refreshing playlists',
           'Checking friend list'
         ].sample + '...')
-        begin
           BOT.stop
-        rescue ThreadError
           exit
-        end
       end
 
     end
