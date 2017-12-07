@@ -11,19 +11,13 @@ module Bot
       # eval command
       command(:eval, help_available: false) do |event, *code|
         break unless event.user.id == CONFIG.owner_id
+        codebox = event.message.content.match(/```(rb|ruby)?\n(?<code>(.|\n)*)```/)
         begin
-          eval code.join(' ')
-        rescue StandardError => e
-          event.send_temp("```#{e}```", 15)
-        end
-      end
-
-      # better eval command
-      command(:eval2, help_available: false) do |event| # TODO: unite eval commands into one
-        break unless event.user.id == CONFIG.owner_id
-        code = event.message.content.match(/```(rb|ruby)\n(?<code>(\n|.)*)```/)['code']
-        begin
-          eval code
+          if codebox
+            "```rb\n#{eval codebox['code']}```"
+          else
+            "```rb\n#{eval code.join(' ')}```"
+          end
         rescue StandardError => e
           event.send_temp("```#{e}```" + "```#{e.backtrace.join('\n')}```", 15)
         end
