@@ -14,7 +14,7 @@ module Bot
   Dir['src/modules/*.rb'].each { |mod| load mod }
 
   # Bot configuration
-  CONFIG = OpenStruct.new YAML.load_file 'data/config.yml'
+  CONFIG = OpenStruct.new YAML.load_file 'config/config.yml'
 
   # Youtube client
   YT_CLIENT = Yourub::Client.new(
@@ -25,7 +25,7 @@ module Bot
   )
 
   # Database
-  # DB = Sequel.sqlite('data/bot.db')
+  # DB = Sequel.sqlite('config/bot.db')
 
   # Redis client
   REDIS = Redis.new

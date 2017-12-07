@@ -11,8 +11,8 @@ module Bot
               description: 'Adds the song to the playlist.',
               usage: "#{BOT.prefix}addto <playlist> <song name>") do |event, name, *args|
         name.downcase!
-        if File.exist?("data/playlists/#{name}.json")
-          hash = JSON.parse(File.read("data/playlists/#{name}.json"))
+        if File.exist?("config/playlists/#{name}.json")
+          hash = JSON.parse(File.read("config/playlists/#{name}.json"))
           if !((hash['authors'].include? event.user.id) || (hash['authors'].include? 0))
             event << 'You can\'t edit this playlist.'
           else
@@ -23,7 +23,7 @@ module Bot
                 event << 'That song already exists in the playlist!'
               else
                 hash['songs'][id] = title
-                open("data/playlists/#{name}.json", 'w') { |f| f << JSON.pretty_generate(hash) }
+                open("config/playlists/#{name}.json", 'w') { |f| f << JSON.pretty_generate(hash) }
                 event << "*#{title}* was added to #{name} playlist!"
                 event.bot.channel(CONFIG.channel_id).send "`#{title} added by #{event.user.name} to #{name} playlist`"
               end

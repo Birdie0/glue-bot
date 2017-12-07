@@ -14,7 +14,6 @@ module Bot
         break unless event.user.id == CONFIG.owner_id
         puts 'Restarting...'
         REDIS.set('last_channel', event.channel.id)
-        # SCHEDULER.shutdown
         event.respond([
           'Restarting',
           'Buying more games',

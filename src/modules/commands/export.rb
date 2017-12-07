@@ -9,11 +9,11 @@ module Bot
               description: 'Exports playlist to txt file.',
               usage: "#{BOT.prefix}export <playlist>") do |event, name|
         name = name.downcase
-        if !File.exist?("data/playlists/#{name}.json")
+        if !File.exist?("config/playlists/#{name}.json")
           event << "#{name} playlist is not exist!"
           event << "Type `#{BOT.prefix}list` for playlists list!"
         else
-          list = JSON.parse(File.read("data/playlists/#{name}.json"))['songs']
+          list = JSON.parse(File.read("config/playlists/#{name}.json"))['songs']
           x = ''
           list.each_key { |i| x << "https://youtu.be/#{i}\n" }
           open("#{name}.txt", 'w') { |f| f << x }

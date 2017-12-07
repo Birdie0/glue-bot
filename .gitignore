@@ -59,4 +59,4 @@ Gemfile.lock
 .history
 
 ### Discord config files ###
-data/*
+config/*

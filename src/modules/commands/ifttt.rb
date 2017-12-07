@@ -26,11 +26,15 @@ module Bot
 
       # set key
       command(:setkey, min_args: 1) do |event, key|
-        if REDIS.set("maker_key:#{event.user.id}", key) == 'OK'
-          event << 'Key has been saved! Now you can send requests to IFTTT webhooks service using `send` command.'
-          event << 'If you want to remove key send `delkey` command to remove your key from storage.'
+        if key =~ /[a-zA-Z0-9\-_]+/
+          if REDIS.set("maker_key:#{event.user.id}", key) == 'OK'
+            event << 'Key has been saved! Now you can send requests to IFTTT webhooks service using `send` command.'
+            event << 'If you want to remove key send `delkey` command to remove your key from storage.'
+          else
+            event << 'Something went wrong!'
+          end
         else
-          event << 'Something went wrong!'
+          event << 'Usually maker key includes letters, numbers, dashes and underscores only. Try again!'
         end
       end
 

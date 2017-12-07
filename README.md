@@ -36,7 +36,16 @@
   * `mshard` - calculates Mee6 shard by server id
   * `meelead` - shows top 10 in Mee6's leaderboard for current server
 
-* Not public
+* IFTTT
+  * `setkey` - save maker key to storage
+  * `delkey` - remove maker key from storage
+  * `seturl` - same but with webhooks url
+  * `delurl` - same but with webhooks url
+  * `send` - send request using maker key to IFTTT, so you can now use Discord command as trigger
+  * `webhook` - same but for webhooks
+  * `jbeauty` - lint + beautify json body
+
+* Non public
   * `eval` - eval command, meh...
   * `restart` - turns off your bot. Run bot in loop (`rake runme`) to make it restart
 
@@ -85,6 +94,10 @@ If you have any questions or suggestions, please come on my [Discord server](htt
 ### APIs
 
 * [shibe.online](http://shibe.online) - source of shibe, cat and bird pics
+
+### Websites
+
+* [IFTTT](https://ifttt.com) - free web-based service to create chains of simple conditional statements, called applets
 
 ### Template
 

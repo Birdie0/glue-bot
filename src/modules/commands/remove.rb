@@ -11,10 +11,10 @@ module Bot
               description: 'Removes song from the playlist.',
               usage: "#{BOT.prefix}remove <playlist> <song name>") do |event, name, *args|
         name.downcase!
-        if !File.exist?("data/playlists/#{name}.json")
+        if !File.exist?("config/playlists/#{name}.json")
           event << "*#{name}* playlist does not exist!"
         else
-          hash = JSON.parse(File.read("data/playlists/#{name}.json"))
+          hash = JSON.parse(File.read("config/playlists/#{name}.json"))
           if !hash['authors'].include? event.user.id
             event << 'You can\'t edit this playlist.'
           else
@@ -22,7 +22,7 @@ module Bot
             event << '```md'
             if result
               hash['songs'].delete result.first
-              open("data/playlists/#{name}.json", 'w') { |f| f << JSON.pretty_generate(hash) }
+              open("config/playlists/#{name}.json", 'w') { |f| f << JSON.pretty_generate(hash) }
               event << "#{result.last} has been deleted from #{name} playlist..."
               event.bot.channel(CONFIG.channel_id).send "`#{result.last} deleted by #{event.user.name} from #{name} playlist`"
             else
