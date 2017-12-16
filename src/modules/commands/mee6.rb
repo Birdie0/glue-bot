@@ -88,7 +88,7 @@ module Bot
         event << "#{response.answer} [#{response.score}]"
       end
 
-      command(:addq) do |event|
+      command(:addq, required_roles: [193123929701875712]) do |event|
         match = event.message.content.match(/q: (?<question>(.+))\na: (?<answer>(.|\n)+)/)
         if match && match['question'] && match['answer']
           QNA.update_kb(answer: match['answer'], question: match['question'])
@@ -97,7 +97,7 @@ module Bot
         end
       end
 
-      command(:train) do |event|
+      command(:train, required_roles: [193123929701875712]) do |event|
         match = event.message.content.match(/u: (?<question2>(.+))\nq: (?<question>(.+))\na: (?<answer>(.|\n)+)/)
         if match && match['question2'] && match['question'] && match['answer']
           QNA.train_kb(match['question2'], match['question'], match['answer'])
@@ -106,7 +106,7 @@ module Bot
         end
       end
 
-      command(:update) do |event|
+      command(:update, required_roles: [193123929701875712]) do |event|
         event << QNA.update_kb
       end
     end
