@@ -33,6 +33,12 @@ module Bot
   # Rufus scheduler
   SCHEDULER = Rufus::Scheduler.new
 
+  # QnA client
+  QNA = QnA.new(
+    CONFIG.knowledgebase_id,
+    CONFIG.subscription_key
+  )
+
   # Create the bot
   BOT = Discordrb::Commands::CommandBot.new(
     token: CONFIG.token,

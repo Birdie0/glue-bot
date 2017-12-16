@@ -16,3 +16,7 @@ youtube_key:
 
 # Music logs Channel ID
 channel_id:
+
+# QnA Credentials
+knowledgebase_id:
+subscription_key:

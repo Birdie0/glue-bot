@@ -83,6 +83,32 @@ module Bot
         end
       end
 
+      command(:ask) do |event, *question|
+        response = QNA.generate_answer(question.join(' '))
+        event << "#{response.answer} [#{response.score}]"
+      end
+
+      command(:addq) do |event|
+        match = event.message.content.match(/q: (?<question>(.+))\na: (?<answer>(.|\n)+)/)
+        if match && match['question'] && match['answer']
+          QNA.update_kb(answer: match['answer'], question: match['question'])
+        else
+          event << "nope! try something like: ```\nq: why something something?\n a: because that!```"
+        end
+      end
+
+      command(:train) do |event|
+        match = event.message.content.match(/u: (?<question2>(.+))\nq: (?<question>(.+))\na: (?<answer>(.|\n)+)/)
+        if match && match['question2'] && match['question'] && match['answer']
+          QNA.train_kb(match['question2'], match['question'], match['answer'])
+        else
+          event << "nope! try something like: ```\nu: why?\nq: why something something?\n a: because that!```"
+        end
+      end
+
+      command(:update) do |event|
+        event << QNA.update_kb
+      end
     end
   end
 end
