@@ -23,7 +23,9 @@ class QnA
 
     case response.code
     when 200
-      OpenStruct.new(response.parse['answers'].first)
+      x = OpenStruct.new(response.parse['answers'].first)
+      x.answer = normalize(x.answer)
+      x
     else
       response.code
     end
@@ -105,5 +107,15 @@ class QnA
                  ''
                end
     "#{BASE_URL}/#{@knowledgebase_id}/#{endpoint}"
+  end
+
+  def normalize(text)
+    text
+    .tr("\r", '')
+    .tr('&lt;', '<')
+    .tr('&gt;', '>')
+    .tr('&#39;', "'")
+    .tr('&quot;', '"')
+    .tr('&amp;', '&')
   end
 end
