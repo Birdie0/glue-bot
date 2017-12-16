@@ -91,7 +91,7 @@ module Bot
       command(:addq, required_roles: [193123929701875712]) do |event|
         match = event.message.content.match(/q: (?<question>(.+))\na: (?<answer>(.|\n)+)/)
         if match && match['question'] && match['answer']
-          QNA.update_kb(answer: match['answer'], question: match['question'])
+          QNA.update_kb([{answer: }match['answer'], question: match['question']}])
         else
           event << "nope! try something like: ```\nq: why something something?\n a: because that!```"
         end
@@ -107,7 +107,7 @@ module Bot
       end
 
       command(:update, required_roles: [193123929701875712]) do |event|
-        event << QNA.update_kb
+        event << QNA.publish_kb
       end
     end
   end
