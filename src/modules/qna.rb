@@ -111,11 +111,11 @@ class QnA
 
   def normalize(text)
     text
-    .tr("\r", '')
-    .tr('&lt;', '<')
-    .tr('&gt;', '>')
-    .tr('&#39;', "'")
-    .tr('&quot;', '"')
-    .tr('&amp;', '&')
+    .gsub("\r", '')
+    .gsub('&lt;', '<')
+    .gsub('&gt;', '>')
+    .gsub('&#39;', "'")
+    .gsub('&quot;', '"')
+    .gsub('&amp;', '&')
   end
 end
