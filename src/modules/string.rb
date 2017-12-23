@@ -8,7 +8,7 @@ class String
       ['&#39;', "'"],
       ['&quot;', '"'],
       ['&amp;', '&'],
-      ['&#160', "\u{00A0}"]
+      ['&#160;', "\u{00A0}"]
     ]
     replacements.map { |i| gsub!(i[0], i[1]) }
   end
