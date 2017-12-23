@@ -88,27 +88,27 @@ module Bot
         event << "#{response.answer} [#{response.score}]"
       end
 
-      command(:addq, required_roles: [193_123_929_701_875_712]) do |event|
-        match = event.message.content.match(/q: (?<question>(.+))\na: (?<answer>(.|\n)+)/)
-        if match && match['question'] && match['answer']
-          QNA.update_kb([answer: match['answer'], question: match['question']])
-        else
-          event << "nope! try something like: ```\nq: why something something?\n a: because that!```"
-        end
-      end
+      # command(:addq, required_roles: [193_123_929_701_875_712]) do |event|
+      #   match = event.message.content.match(/q: (?<question>(.+))\na: (?<answer>(.|\n)+)/)
+      #   if match && match['question'] && match['answer']
+      #     QNA.update_kb([answer: match['answer'], question: match['question']])
+      #   else
+      #     event << "nope! try something like: ```\nq: why something something?\n a: because that!```"
+      #   end
+      # end
 
-      command(:train, required_roles: [193_123_929_701_875_712]) do |event|
-        match = event.message.content.match(/u: (?<question2>(.+))\nq: (?<question>(.+))\na: (?<answer>(.|\n)+)/)
-        if match && match['question2'] && match['question'] && match['answer']
-          QNA.train_kb(match['question2'], match['question'], match['answer'])
-        else
-          event << "nope! try something like: ```\nu: why?\nq: why something something?\n a: because that!```"
-        end
-      end
+      # command(:train, required_roles: [193_123_929_701_875_712]) do |event|
+      #   match = event.message.content.match(/u: (?<question2>(.+))\nq: (?<question>(.+))\na: (?<answer>(.|\n)+)/)
+      #   if match && match['question2'] && match['question'] && match['answer']
+      #     QNA.train_kb(match['question2'], match['question'], match['answer'])
+      #   else
+      #     event << "nope! try something like: ```\nu: why?\nq: why something something?\n a: because that!```"
+      #   end
+      # end
 
-      command(:update, required_roles: [193_123_929_701_875_712]) do |event|
-        event << QNA.publish_kb
-      end
+      # command(:update, required_roles: [193_123_929_701_875_712]) do |event|
+      #   event << QNA.publish_kb
+      # end
     end
   end
 end
