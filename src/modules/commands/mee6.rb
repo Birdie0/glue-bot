@@ -48,7 +48,7 @@ module Bot
             url: "https://mee6.xyz/levels/#{server_id}",
             icon_url: 'https://cdn.discordapp.com/emojis/230231424739835904.png'
           )
-          parsed.each do |j|
+          parsed.first(25).each do |j|
             embed.add_field(
               name: j[:name_text],
               value: j[:level_text],
