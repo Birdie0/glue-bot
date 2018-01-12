@@ -34,7 +34,7 @@ module Bot
       # mee6 leaderboard command
       command(:meelead) do |event|
         server_id = event.server.id
-        link = "https://mee6.xyz/levels/#{server_id}?json=1&limit=10"
+        link = "https://mee6.xyz/levels/#{server_id}?json=1"
         response = HTTParty.get(link).parsed_response['players']
         parsed = response.map do |i|
           {
@@ -48,7 +48,7 @@ module Bot
             url: "https://mee6.xyz/levels/#{server_id}",
             icon_url: 'https://cdn.discordapp.com/emojis/230231424739835904.png'
           )
-          parsed.first(25).each do |j|
+          parsed.first(10).each do |j|
             embed.add_field(
               name: j[:name_text],
               value: j[:level_text],
