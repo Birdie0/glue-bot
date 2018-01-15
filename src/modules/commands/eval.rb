@@ -19,7 +19,7 @@ module Bot
             "```rb\n#{eval code.join(' ')}```"
           end
         rescue StandardError => e
-          event.send_temp("```#{e}```" + "```#{e.backtrace.join('\n')}```", 15)
+          event.send_temp("```#{e}```" + "```#{e.backtrace.join("\n")}```", 15)
         end
       end
 
