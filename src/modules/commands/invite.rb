@@ -10,6 +10,7 @@ module Bot
               description: 'Sends bot invite.',
               usage: "#{BOT.prefix}invite") do |event|
         event << "Invite link: <#{BOT.invite_url}>"
+        event << "Support server: https://discord.gg/eJcMYph"
       end
 
     end
