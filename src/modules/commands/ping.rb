@@ -11,7 +11,7 @@ module Bot
               description: 'Sends pong message with ping delay.',
               usage: "#{BOT.prefix}ping") do |event|
         m = event.respond 'Pong!'
-        m.edit "Pong! `#{(Time.now - event.timestamp) * 1000} ms`"
+        m.edit "Pong! `#{((Time.now - event.timestamp) * 1000).round(3)} ms`"
       end
 
     end

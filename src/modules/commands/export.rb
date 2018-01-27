@@ -15,7 +15,7 @@ module Bot
         else
           list = JSON.parse(File.read("config/playlists/#{name}.json"))['songs']
           x = ''
-          list.each_key { |i| x << "https://youtu.be/#{i}\n" }
+          list.each_key { |i| x << "https://youtu.be/#{i}\r\n" }
           open("#{name}.txt", 'w') { |f| f << x }
           event.channel.send_file File.new("#{name}.txt")
           File.delete("#{name}.txt")

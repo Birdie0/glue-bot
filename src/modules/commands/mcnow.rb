@@ -9,9 +9,11 @@ module Bot
       command(:mcnow,
               description: 'Shows information of the currently playing song on Monstercat FM',
               usage: "#{BOT.prefix}mcnow") do |event|
-        page = Nokogiri::HTML(open('https://mctl.io/', ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE))
+        url = 'https://mctl.io/'
+        page = Nokogiri::HTML(open(url))
         event.channel.send_embed do |embed|
           embed.title = 'Monstercat FM'
+          embed.url = url
           embed.description = "*#{page.css('span#title').text} - #{page.css('span#artists').text}*"
           embed.image = Discordrb::Webhooks::EmbedImage.new(url: page.css('img#np-image')[0]['src'])
           embed.footer = Discordrb::Webhooks::EmbedFooter.new(text: "Album: #{page.css('span#album').text}")

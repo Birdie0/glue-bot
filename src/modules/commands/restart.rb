@@ -2,7 +2,7 @@
 
 module Bot
   module DiscordCommands
-    # Sends bot sleep.
+    # Sends bot to sleep.
     # If you launch bot with `rake runme`, it will restart.
     module Restart
       extend Discordrb::Commands::CommandContainer

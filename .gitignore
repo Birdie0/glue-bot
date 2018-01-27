@@ -63,3 +63,4 @@ config/*
 
 ### Some files that should be hidden for easier testing ###
 src/modules/*/secret_*.rb
+bin/

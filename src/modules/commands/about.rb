@@ -14,6 +14,7 @@ module Bot
         event << "My prefix is `#{event.bot.prefix}` and my help command is `#{event.bot.prefix}help`"
         event << "I was created by #{event.bot.user(127_405_523_598_311_424).name}"
         event << 'using discordrb <:ruby_taco:336115106670968833>, :clock2: and :heart:'
+        event << 'Source code: <https://git.io/vNMoQ>'
       end
 
     end

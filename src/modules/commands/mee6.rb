@@ -9,11 +9,11 @@ module Bot
       # mee6 shard calculation
       command(:mshard) do |event, id = event.server.id|
         n = 320 # number of shards
-        @a ||= []
-        table = if @a.empty?
+        @servers ||= []
+        table = if @servers.empty?
                   'placeholder'
                 else
-                  "```#{@a.join("\n")}```"
+                  "```#{@servers.join("\n")}```"
                 end
         event.channel.send_embed do |embed|
           embed.author = Discordrb::Webhooks::EmbedAuthor.new(
@@ -27,7 +27,7 @@ module Bot
             name: 'Last 5 shard checks',
             value: table
           )
-          @a = @a.push("#{((id.to_i >> 22) % n).to_s.rjust(3, ' ')} | #{id}").last(5)
+          @servers = @servers.push("#{((id.to_i >> 22) % n).to_s.rjust(3, ' ')} | #{id}").last(5)
         end
       end
 
@@ -39,7 +39,7 @@ module Bot
         parsed = response.map do |i|
           {
             name_text: "#{i['name']} (Level #{i['lvl']})",
-            level_text: "#{i['xp']}/#{i['lvl_xp']} (#{i['xp_percent']}%)\nT: #{i['total_xp']} xp\nMin:#{((i['lvl_xp'] - i['xp']) / 25.0).ceil} Max:#{((i['lvl_xp'] - i['xp']) / 15.0).ceil} Avg:#{((i['lvl_xp'] - i['xp']) / 20.0).ceil}"
+            level_text: "#{i['xp']}/#{i['lvl_xp']} (#{i['xp_percent']}%)\nT: #{i['total_xp']} xp\nMin:#{((i['lvl_xp'] - i['xp']) / 25.0).ceil} Avg:#{((i['lvl_xp'] - i['xp']) / 20.0).ceil} Max:#{((i['lvl_xp'] - i['xp']) / 15.0).ceil}"
           }
         end
         event.channel.send_embed('') do |embed|
@@ -48,7 +48,7 @@ module Bot
             url: "https://mee6.xyz/levels/#{server_id}",
             icon_url: 'https://cdn.discordapp.com/emojis/230231424739835904.png'
           )
-          parsed.first(10).each do |j|
+          parsed.first(12).each do |j|
             embed.add_field(
               name: j[:name_text],
               value: j[:level_text],
