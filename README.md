@@ -34,7 +34,7 @@
 
 * Mee6
   * `mshard` - calculates Mee6 shard by server id
-  * `meelead` - shows top 10 in Mee6's leaderboard for current server
+  * `meelead` - shows top 12 in Mee6's leaderboard for current server
 
 * IFTTT
   * `setkey` - save maker key to storage
