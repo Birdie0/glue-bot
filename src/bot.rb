@@ -17,12 +17,10 @@ module Bot
   CONFIG = OpenStruct.new YAML.load_file 'config/config.yml'
 
   # Youtube client
-  # YT_CLIENT = Yourub::Client.new(
-  #   developer_key: CONFIG.youtube_key,
-  #   application_name: 'yourub',
-  #   application_version: 2.0,
-  #   log_level: 3
-  # )
+  Yt.configure do |config|
+    config.api_key = CONFIG.youtube_key
+  end
+  VIDS = Yt::Collections::Videos.new
 
   # Database
   # DB = Sequel.sqlite('config/bot.db')
