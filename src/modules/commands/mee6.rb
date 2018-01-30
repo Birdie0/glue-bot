@@ -35,7 +35,7 @@ module Bot
       command(:meelead) do |event, server_id|
         server_id ||= event.server.id
         response = HTTP.auth(CONFIG.mee6_token)
-                       .get("https://api.mee6.xyz/plugins/levels/leaderboard/#{server_id}")
+                       .get("https://api.mee6.xyz/plugins/levels/leaderboard/#{server_id}?limit=12")
         if response.code == 200
           event.channel.send_embed('') do |embed|
             embed.color = rand(0..0xffffff)
@@ -44,13 +44,15 @@ module Bot
               url: "https://mee6.xyz/levels/#{server_id}",
               icon_url: 'https://cdn.discordapp.com/emojis/230231424739835904.png'
             )
-            response.parse['players'].first(12).each_with_index do |player, index|
+            response.parse['players'].each_with_index do |player, index|
               user = get_xp_info(player)
               embed.add_field(
                 name: "#{index + 1}) #{user.name} (Level: #{user.level})",
                 value: "#{user.xp}/#{user.level_xp_max} (#{user.percent}%)\n" \
                        "T:#{user.total_xp}xp\n" \
-                       "Min:#{(user.remaining / 25.0).ceil} Avg:#{(user.remaining / 20.0).ceil} Max:#{(user.remaining / 15.0).ceil}",
+                       "Min:#{(user.remaining / 25.0).ceil} " \
+                       "Avg:#{(user.remaining / 20.0).ceil} " \
+                       "Max:#{(user.remaining / 15.0).ceil}",
                 inline: true
               )
             end
