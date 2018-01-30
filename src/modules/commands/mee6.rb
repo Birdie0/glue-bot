@@ -47,7 +47,7 @@ module Bot
             response.parse['players'].first(12).each_with_index do |player, index|
               user = get_xp_info(player)
               embed.add_field(
-                name: "#{index}) #{user.name} (Level: #{user.level})",
+                name: "#{index + 1}) #{user.name} (Level: #{user.level})",
                 value: "#{user.xp}/#{user.level_xp_max} (#{user.percent}%)\n" \
                        "T:#{user.total_xp}xp\n" \
                        "Min:#{(user.remaining / 25.0).ceil} Avg:#{(user.remaining / 20.0).ceil} Max:#{(user.remaining / 15.0).ceil}",
