@@ -4,7 +4,6 @@ source 'https://rubygems.org'
 
 gem 'discordrb', git: 'https://github.com/meew0/discordrb.git'
 gem 'http'
-# gem 'httparty'
 gem 'multi_json'
 gem 'nokogiri'
 gem 'oj'
@@ -13,9 +12,8 @@ gem 'rufus-scheduler'
 # gem 'sequel'
 # gem 'sqlite3', require: false
 # gem 'xkcd'
-# gem 'yourub'
-# gem 'yt'
-# gem 'yt-url'
+gem 'yt'
+gem 'yt-url'
 
 group :development do
   gem 'pry', require: false
