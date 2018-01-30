@@ -10,7 +10,7 @@ module Bot
               max_args: 1,
               description: 'Creates a new playlist',
               usage: "#{BOT.prefix}create <playlist>") do |event|
-              # usage: "#{BOT.prefix}create <playlist>") do |event, name|
+        # usage: "#{BOT.prefix}create <playlist>") do |event, name|
         # name.downcase!
         # if File.exist?("config/playlists/#{name.downcase}.json")
         #   event << "#{name} playlist already exists!"

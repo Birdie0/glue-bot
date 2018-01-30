@@ -12,11 +12,11 @@ module Bot
         break unless event.user.id == CONFIG.owner_id
         codebox = event.message.content.match(/```(rb|ruby)?\n(?<code>(.|\n)*)```/)
         begin
-          if codebox
-            result = eval codebox['code']
-          else
-            result = eval code.join(' ')
-          end
+          result = if codebox
+                     eval codebox['code']
+                   else
+                     eval code.join(' ')
+                   end
           result.to_s.empty? ? nil : "```rb\n#{result}```"
         rescue StandardError => e
           # event.send_temp("```#{e}```" + "```#{e.backtrace.join("\n")}```", 15)

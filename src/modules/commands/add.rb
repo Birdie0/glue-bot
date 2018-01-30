@@ -10,7 +10,7 @@ module Bot
               min_args: 2,
               description: 'Adds the song to the playlist.',
               usage: "#{BOT.prefix}add <playlist> <song name>") do |event|
-              # usage: "#{BOT.prefix}addto <playlist> <song name>") do |event, name, *args|
+        # usage: "#{BOT.prefix}addto <playlist> <song name>") do |event, name, *args|
         # name.downcase!
         # if File.exist?("config/playlists/#{name}.json")
         #   hash = JSON.parse(File.read("config/playlists/#{name}.json"))

@@ -31,31 +31,54 @@ module Bot
         end
       end
 
-      # mee6 leaderboard command
-      command(:meelead) do |event|
-        server_id = event.server.id
-        link = "https://mee6.xyz/levels/#{server_id}?json=1"
-        response = HTTP.get(link).parse['players']
-        parsed = response.map do |i|
-          {
-            name_text: "#{i['name']} (Level #{i['lvl']})",
-            level_text: "#{i['xp']}/#{i['lvl_xp']} (#{i['xp_percent']}%)\nT: #{i['total_xp']} xp\nMin:#{((i['lvl_xp'] - i['xp']) / 25.0).ceil} Avg:#{((i['lvl_xp'] - i['xp']) / 20.0).ceil} Max:#{((i['lvl_xp'] - i['xp']) / 15.0).ceil}"
-          }
+      def get_lvl_xp(xp)
+        5 * (xp**2) + 50 * xp + 100
+      end
+
+      def get_xp_info(player)
+        remaining = player['xp']
+        level = 0
+        while remaining >= get_lvl_xp(level)
+          remaining -= get_lvl_xp(level)
+          level += 1
         end
-        event.channel.send_embed('') do |embed|
-          embed.author = Discordrb::Webhooks::EmbedAuthor.new(
-            name: 'Mee6 Leaderboard',
-            url: "https://mee6.xyz/levels/#{server_id}",
-            icon_url: 'https://cdn.discordapp.com/emojis/230231424739835904.png'
-          )
-          parsed.first(12).each do |j|
-            embed.add_field(
-              name: j[:name_text],
-              value: j[:level_text],
-              inline: true
+        OpenStruct.new(
+          name: "#{player['username']}##{player['discriminator']}",
+          level: level,
+          total_xp: player['xp'],
+          remaining: remaining,
+          level_xp_max: get_lvl_xp(level),
+          xp: get_lvl_xp(level) - remaining,
+          percent: (get_lvl_xp(level) - remaining) * 100 / get_lvl_xp(level)
+        )
+      end
+
+      # mee6 leaderboard command
+      command(:meelead) do |event, server_id|
+        server_id ||= event.server.id
+        response = HTTP.auth(CONFIG.mee6_token)
+                       .get("https://api.mee6.xyz/plugins/levels/leaderboard/#{server_id}")
+        if response.code == 200
+          event.channel.send_embed('') do |embed|
+            embed.color = rand(0..0xffffff)
+            embed.author = Discordrb::Webhooks::EmbedAuthor.new(
+              name: 'Mee6 Leaderboard',
+              url: "https://mee6.xyz/levels/#{server_id}",
+              icon_url: 'https://cdn.discordapp.com/emojis/230231424739835904.png'
             )
+            response.parse['players'].first(12).each do |player|
+              user = get_xp_info(player)
+              embed.add_field(
+                name: "#{user.name} (Level: #{user.level})",
+                value: "#{user.xp}/#{user.level_xp_max} (#{user.percent}%)\n" \
+                       "T:#{user.total_xp}xp\n" \
+                       "Min:#{(user.remaining / 25.0).ceil} Avg:#{(user.remaining / 20.0).ceil} Max:#{(user.remaining / 15.0).ceil}",
+                inline: true
+              )
+            end
           end
-          embed.colour = rand(0..0xffffff)
+        else
+          event << 'Server not found!'
         end
       end
 

@@ -20,3 +20,6 @@ channel_id:
 # QnA Credentials
 knowledgebase_id:
 subscription_key:
+
+# Mee6 API key
+mee6_api:
