@@ -35,7 +35,7 @@ module Bot
       command(:meelead) do |event|
         server_id = event.server.id
         link = "https://mee6.xyz/levels/#{server_id}?json=1"
-        response = HTTParty.get(link).parsed_response['players']
+        response = HTTP.get(link).parse['players']
         parsed = response.map do |i|
           {
             name_text: "#{i['name']} (Level #{i['lvl']})",
@@ -63,7 +63,7 @@ module Bot
       command(:meeroles) do |event|
         server_id = event.server.id
         link = "https://mee6.xyz/levels/#{server_id}?json=1&limit=0"
-        response = HTTParty.get(link).parsed_response['reward_roles']
+        response = HTTP.get(link).parse['reward_roles']
         response = response.sort_by { |key, _value| key.to_i }
         description = []
         response.map do |i, j|

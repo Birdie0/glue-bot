@@ -44,7 +44,7 @@ module Bot
 
       # set webhook url
       command(:seturl, min_args: 1) do |event, url|
-        if url =~ %r{https:\/\/((canary|ptb).)?discordapp\.com\/api\/webhooks\/\d+\/[0-9a-zA-Z\-_]+} && (HTTParty.get(url).code == 200)
+        if url =~ %r{https:\/\/((canary|ptb).)?discordapp\.com\/api\/webhooks\/\d+\/[0-9a-zA-Z\-_]+} && (HTTP.get(url).code == 200)
           if REDIS.set("webhook_url:#{event.user.id}", url) == 'OK'
             event << 'Webhook url has been saved! Now you can send webhook requests using `webhook` command.'
             event << 'If you want to remove key send `delurl` command to remove your key from storage.'
@@ -69,7 +69,7 @@ module Bot
           if event_name =~ /[A-Za-z\-_]+/
             options = options.join(' ').split('|')
             params = { value1: options[0], value2: options[1], value3: options[2] }
-            response = HTTParty.post("https://maker.ifttt.com/trigger/#{event_name}/with/key/#{maker_key}", body: params)
+            response = HTTP.post("https://maker.ifttt.com/trigger/#{event_name}/with/key/#{maker_key}", json: params)
             event.channel.send_embed do |embed|
               if response.code == 200
                 embed.color = 0x1ad413
@@ -98,7 +98,7 @@ module Bot
           body = event.message.content.match(/```.*\n(?<body>(\n|.)*)```/)
           if body
             begin
-              response = HTTParty.post(url, body: body['body'])
+              response = HTTP.post(url, json: body['body'])
               event.channel.send_embed do |embed|
                 if response.code == 204
                   embed.color = 0x1ad413
