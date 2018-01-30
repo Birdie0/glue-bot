@@ -98,14 +98,15 @@ module Bot
           body = event.message.content.match(/```.*\n(?<body>(\n|.)*)```/)
           if body
             begin
-              response = HTTP.post(url, body: body['body'])
+              response = HTTP.post(url, json: MultiJson.load(body['body']))
               event.channel.send_embed do |embed|
                 if response.code == 204
                   embed.color = 0x1ad413
                   embed.title = 'Success!'
                 else
                   embed.color = 0xf51e1e
-                  embed.title = 'Whoops, something went wrong!'
+                  embed.title = "Whoops, something went wrong! Error:#{response.code}"
+                  embed.description = response.to_s
                 end
               end
             rescue MultiJson::ParseError => e # TODO: make output smaller
