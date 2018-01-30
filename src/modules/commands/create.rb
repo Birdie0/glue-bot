@@ -9,19 +9,17 @@ module Bot
       command(:create,
               max_args: 1,
               description: 'Creates a new playlist',
-              usage: "#{BOT.prefix}create <playlist>") do |event|
-        # usage: "#{BOT.prefix}create <playlist>") do |event, name|
-        # name.downcase!
-        # if File.exist?("config/playlists/#{name.downcase}.json")
-        #   event << "#{name} playlist already exists!"
-        #   event << "Type `#{BOT.prefix}list` for playlists list!"
-        # else
-        #   open("config/playlists/#{name}.json", 'w') { |f| f << JSON.pretty_generate(authors: [event.user.id], songs: {}) }
-        #   event << "*#{name}* playlist was created!"
-        #   event.bot.channel(CONFIG.channel_id).send "`#{name} playlist was created by #{event.user.name}`"
-        # end
-        # nil
-        event << ':warning: Command is disabled due to maintenance.'
+              usage: "#{BOT.prefix}create <playlist>") do |event, name|
+        name.downcase!
+        if File.exist?("config/playlists/#{name.downcase}.json")
+          event << "#{name} playlist already exists!"
+          event << "Type `#{BOT.prefix}list` for playlists list!"
+        else
+          open("config/playlists/#{name}.json", 'w') { |f| f << JSON.pretty_generate(authors: [event.user.id], songs: {}) }
+          event << "*#{name}* playlist was created!"
+          event.bot.channel(CONFIG.channel_id).send "`#{name} playlist was created by #{event.user.name}`"
+        end
+        nil
       end
 
     end

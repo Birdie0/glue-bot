@@ -9,32 +9,30 @@ module Bot
       command(:add,
               min_args: 2,
               description: 'Adds the song to the playlist.',
-              usage: "#{BOT.prefix}add <playlist> <song name>") do |event|
-        # usage: "#{BOT.prefix}addto <playlist> <song name>") do |event, name, *args|
-        # name.downcase!
-        # if File.exist?("config/playlists/#{name}.json")
-        #   hash = JSON.parse(File.read("config/playlists/#{name}.json"))
-        #   if !((hash['authors'].include? event.user.id) || (hash['authors'].include? 0))
-        #     event << 'You can\'t edit this playlist.'
-        #   else
-        #     YT_CLIENT.search(max_results: 1, query: args.join(' ')) do |v|
-        #       id = v['id']
-        #       title = v['snippet']['title']
-        #       if hash['songs'].include? id
-        #         event << 'That song already exists in the playlist!'
-        #       else
-        #         hash['songs'][id] = title
-        #         open("config/playlists/#{name}.json", 'w') { |f| f << JSON.pretty_generate(hash) }
-        #         event << "*#{title}* was added to #{name} playlist!"
-        #         event.bot.channel(CONFIG.channel_id).send "`#{title} added by #{event.user.name} to #{name} playlist`"
-        #       end
-        #     end
-        #   end
-        # else
-        #   event << "*#{name}* playlist is not exist!"
-        # end
-        # nil
-        event << ':warning: Command is disabled due to maintenance.'
+              usage: "#{BOT.prefix}addto <playlist> <song name>") do |event, name, *args|
+        name.downcase!
+        if File.exist?("config/playlists/#{name}.json")
+          hash = JSON.parse(File.read("config/playlists/#{name}.json"))
+          if !((hash['authors'].include? event.user.id) || (hash['authors'].include? 0))
+            event << "You can't edit this playlist."
+          else
+            video = VIDS.where(q: args.join(' '), order: 'relevance', maxResults: 1).first
+            if video
+              if hash['songs'].include? video.id
+                event << 'That song already exists in the playlist!'
+              else
+                hash['songs'][video.id] = video.title
+                open("config/playlists/#{name}.json", 'w') { |f| f << JSON.pretty_generate(hash) }
+                event << "**#{title}** has been added to **#{name}** playlist!"
+                event.bot.channel(CONFIG.channel_id).send "`#{title} added by #{event.user.name} to #{name} playlist`"
+              end
+            else
+              event << 'Video not found!'
+            end
+          end
+        else
+          event << "**#{name}** playlist does not exist!"
+        end
       end
 
     end
