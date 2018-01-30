@@ -62,7 +62,7 @@ module Bot
   end
 
   # Owner permission
-  BOT.set_user_permission(CONFIG.owner, 999)
+  BOT.set_user_permission(CONFIG.owner_id, 999)
 
   # Bot buckets
   BOT.bucket :limit, limit: 10, time_span: 1000, delay: 60
