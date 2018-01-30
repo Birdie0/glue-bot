@@ -23,8 +23,8 @@ module Bot
               else
                 hash['songs'][video.id] = video.title
                 open("config/playlists/#{name}.json", 'w') { |f| f << JSON.pretty_generate(hash) }
-                event << "**#{title}** has been added to **#{name}** playlist!"
-                event.bot.channel(CONFIG.channel_id).send "`#{title} added by #{event.user.name} to #{name} playlist`"
+                event << "**#{video.title}** has been added to **#{name}** playlist!"
+                event.bot.channel(CONFIG.channel_id).send "`#{video.title} added by #{event.user.name} to #{name} playlist`"
               end
             else
               event << 'Video not found!'
