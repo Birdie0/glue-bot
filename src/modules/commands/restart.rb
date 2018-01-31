@@ -46,12 +46,20 @@ module Bot
           'Brewing some potions',
           'Sinking into the ocean',
           'Drinking some beer',
-          'Yelling at my teammates'
+          'Yelling at my teammates',
+          'Punching wood',
+          'Watching a YTPMV',
+          'Hacking Minecraft',
+          'Going to a speed-date',
+          'Paying bills',
+          'Updating to Windows 10',
+          'Uploading payload to NSA\'s servers',
+          'Reading a book',
+          'Reading Reddit comments'
         ].sample + '...')
         BOT.stop
         exit
       end
-
     end
   end
 end
