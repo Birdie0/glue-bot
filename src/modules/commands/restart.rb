@@ -20,46 +20,34 @@ module Bot
           'Making more tea',
           'Refreshing playlists',
           'Checking friend list',
-          'Picking Yasuo',
           'Taking out the dog',
           'Doing some dank 360 noscopes',
           'Doing some sick AWP flicks',
           'Staring at nothing',
           'Making spaghetti',
           'Hacking Facebook',
-          'Picking Moira',
-          'Opening loot boxes',
-          'Writing my testament',
           'Looking at my husbando',
           'Reading news on Facebook',
-          'Posting some lewd photos on Instagram',
           'Ordering some pizza',
           'Rushing B',
           'Clicking circles',
           'Going shopping',
-          'Listening to trap songs',
           'Listening to pop songs',
           'Listening to house songs',
-          'Picking Dokkaebi',
           'Writing an essay',
-          'Calling the domestic violence hotline',
           'Brewing some potions',
-          'Sinking into the ocean',
-          'Drinking some beer',
           'Yelling at my teammates',
           'Punching wood',
-          'Watching a YTPMV',
           'Hacking Minecraft',
-          'Going to a speed-date',
           'Paying bills',
           'Updating to Windows 10',
-          'Uploading payload to NSA\'s servers',
           'Reading a book',
           'Reading Reddit comments'
         ].sample + '...')
         BOT.stop
         exit
       end
+
     end
   end
 end
