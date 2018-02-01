@@ -10,7 +10,7 @@ def get_xp_info(player)
     level += 1
   end
   OpenStruct.new(
-    name: "#{player['username']}##{player['discriminator']}",
+    name: "#{player['username'].first(15)}##{player['discriminator']}",
     level: level,
     total_xp: player['xp'],
     remaining: remaining,

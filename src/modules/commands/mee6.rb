@@ -62,7 +62,31 @@ module Bot
         end
       end
 
-      # mee6 leaderboard command
+      # mee6 leaderboard command alternate
+      command(:meelead2) do |event, n = 15|
+        server_id = event.server.id
+        response = HTTP.auth(CONFIG.mee6_token)
+                       .get("https://api.mee6.xyz/plugins/levels/leaderboard/#{server_id}?limit=#{n}")
+        if response.code == 200
+          table = TTY::Table.new header: ['#', 'Username', 'Level', '%', 'Total', 'Min', 'Avg', 'Max']
+          response.parse['players'].each_with_index do |player, index|
+            user = get_xp_info(player)
+            table << [index + 1,
+                      user.name,
+                      user.level,
+                      user.percent,
+                      user.total_xp,
+                      (user.remaining / 25.0).ceil,
+                      (user.remaining / 20.0).ceil,
+                      (user.remaining / 15.0).ceil]
+          end
+          "```\n#{table.render(:unicode, alignment: [:center])}```"
+        else
+          event << 'Server not found!'
+        end
+      end
+
+      # mee6 roles command
       command(:meeroles) do |event|
         server_id = event.server.id
         link = "https://mee6.xyz/levels/#{server_id}?json=1&limit=0"
