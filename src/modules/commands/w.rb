@@ -14,6 +14,7 @@ module Bot
         if info
           event.channel.send_embed('') do |embed|
             embed.title = info['name']
+            # embed.url = base_url + '/structure/' + info['link'] + '.html'
             embed.description = info['description']
             embed.add_field(
               name: 'Example',

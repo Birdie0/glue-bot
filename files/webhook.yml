@@ -50,12 +50,34 @@
   example: |
     ```json
     {
-      "embeds": [
-        {
-          "title": "Hello!",
-          "description": "Hi! :grinning:"
-        }
-      ]
+      "embeds": [{
+        "title": "Hello!",
+        "description": "Hi! :grinning:"
+      }]
+    }
+    ```
+
+# author
+-
+  name: author
+  description: |
+    Adds Author block to embed. `author` is an object which includes three values:
+
+    * `name` - sets name.
+    * `url` - sets link. Requires `name` value. If used, transforms `name` into hyperlink.
+    * `icon_url` - sets avatar. Requires `name` value.
+  image: /img/embed/author.png
+  example: |
+    ```json
+    {
+      "embeds": [{
+        "author": {
+          "name": "Delivery Girl 🍕",
+          "url": "https://www.reddit.com/r/Pizza/",
+          "icon_url": "https://i.imgur.com/V8ZjaMa.jpg"
+        },
+        "description": "Your pizza is ready!\n:timer:ETA: 10 minutes."
+      }]
     }
     ```
 
@@ -80,5 +102,165 @@
           "color": "14177041"
         }
       ]
+    }
+    ```
+
+# description
+-
+  name: description
+  description: |
+    Sets description for webhook's embed.
+  image: /img/embed/description.png
+  example: |
+    ```json
+    {
+      "embeds": [{
+        "description": "*Hi!* **Wow!** I can __use__ hyperlinks [here](https://discordapp.com)."
+      }]
+    }
+    ```
+
+# fields
+-
+  name: fields
+  description: |
+    Allows you to use multiple `title + description` blocks in embed. `fields` is an array of `field` objects. Each object includes three values:
+
+    * `name` - sets name for field object. Required;
+    * `value` - sets description for field object. Required;
+    * `inline` - if `true` then sets field objects in same line, **but** if you have more than 3 objects with enabled `inline` or just too long you will get rows with 3 fields in each one or with 2 fields if you used `thumbnail` object. `false` by default. Optional.
+
+    P.S. You can use up to 25 fields in same embed. `name` and `value` support [Discord Markdown]
+  image: /img/embed/fields.png
+  example: |
+    ```json
+    {
+      "embeds": [{
+        "fields": [
+          {
+            "name": "Cat",
+            "value": "Hi! :wave:",
+            "inline": true
+          },
+          {
+            "name": "Dog",
+            "value": "hello!",
+            "inline": true
+          },
+          {
+            "name": "Cat",
+            "value": "wanna play? join to voice channel!"
+          },
+          {
+            "name": "Dog",
+            "value": "yay"
+          }
+        ]
+      }]
+    }
+    ```
+
+# footer
+-
+  name: footer
+  description: |
+    Allows you to add footer to embed. `footer` is an object which includes two values:
+
+    * `text` - sets name for author object. Markdown is disabled here!!!
+    * `icon_url` - sets icon for author object. Requires `text` value.
+  image: /img/embed/footer.png
+  example: |
+    ```json
+    {
+      "embeds": [{
+          "footer": {
+            "text": "Woah! *So cool!* :smirk:",
+            "icon_url": "https://i.imgur.com/fKL31aD.jpg"
+          },
+          "description": "Your pizza is ready!\n:timer:ETA: 10 minutes."
+      }]
+    }
+    ```
+
+# image
+-
+  name: image
+  description: |
+    Allows you to use image in the embed. You can set only url of the image. There is no way to set width/height of the picture.
+  image: /img/embed/image.png
+  example: |
+    ```json
+    {
+      "embeds": [{
+        "image": {
+          "url": "https://i.imgur.com/ZGPxFN2.jpg"
+        }
+      }]
+    }
+    ```
+
+# thumbnail
+-
+  name: thumbnail
+  description: |
+    Allows you to use thumbnail in the embed. You can set only url of the thumbnail. There is no way to set width/height of the picture.
+  image: /img/embed/thumbnail.png
+  example: |
+    ```json
+    {
+      "embeds": [{
+        "thumbnail": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/3/38/4-Nature-Wallpapers-2014-1_ukaavUI.jpg"
+        }
+      }]
+    }
+    ```
+
+# timestamp
+-
+  name: timestamp
+  description: |
+    Allows you to add `timestamp` to embed. Time stores as String in the next format: `"YYYY-MM-DDTHH:MM:SS.MSSZ"`. If `footer` was used they will be separated with a bullet (•). Also, this is special field, because it can show different time based on user's device.
+
+    P.S. Timestamp is not just text. This is formatted UTC time and date. It will show different time because timezones. Look on example below: I set 12pm but it shows 2pm because UTC+2 timezone.
+  image: /img/embed/timestamp.png
+  example: |
+    ```json
+    {
+      "embeds": [{
+        "description": "Time travel!",
+        "timestamp": "2015-12-31T12:00:00.000Z"
+      }]
+    }
+    ```
+
+# title
+-
+  name: title
+  description: |
+    Sets title for webhook's embed.
+  image: /img/embed/title.png
+  example: |
+    ```json
+    {
+      "embeds": [{
+        "title": "Meow!"
+      }]
+    }
+    ```
+
+# url
+-
+  name: url
+  description: |
+    Sets link for title in your webhook message. Requires `title` variable and turns it into hyperlink.
+  image: /img/embed/url.png
+  example: |
+    ```json
+    {
+      "embeds": [{
+        "title": "Google it!",
+        "url": "https://google.com/"
+      }]
     }
     ```
