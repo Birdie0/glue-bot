@@ -1,0 +1,84 @@
+---
+
+# username
+-
+  name: username
+  description: |
+    Overrides webhook's username. Useful, if you're using same webhook url for several things.
+  image: /img/username.png
+  example: |
+    ```json
+    {
+      "username": "Cat",
+      "content": "Hello!"
+    }
+    ```
+
+# avatar_url
+-
+  name: avatar_url
+  description: |
+    Overrides webhook's avatar. Useful, if you're using same webhook url for several things.
+  image: /img/avatar_url.png
+  example: |
+    ```json
+    {
+      "avatar_url": "https://i.imgur.com/oBPXx0D.png",
+      "content": "Woof-woof!"
+    }
+    ```
+
+# content
+-
+  name: content
+  description: |
+    Sets text for webhook message.
+  image: /img/content.png
+  example: |
+    ```json
+    {
+      "content": "*reads manual*"
+    }
+    ```
+
+# embeds
+-
+  name: embeds
+  description: |
+    Adds embeds to webhook message. `embeds` is an array of embeds and can contain up to 10 embeds in the same message.
+  image: /img/embeds_1.png
+  example: |
+    ```json
+    {
+      "embeds": [
+        {
+          "title": "Hello!",
+          "description": "Hi! :grinning:"
+        }
+      ]
+    }
+    ```
+
+# color
+-
+  name: color
+  description: |
+    Sets color for webhook's embed. It equals 0 (transparent) by default. Color requires number instead hex code, so you have to convert hexadecimal color code to decimal number. Color can be defined as number `65280` and as string `"65280"`.
+
+    I recommend to use [SpyColor](http://www.spycolor.com/) for color picking, it provides decimal value.
+  image: /img/embed/color.png
+  example: |
+    ```json
+    {
+      "embeds": [
+        {
+          "title": "Meow!",
+          "color": 1127128
+        },
+        {
+          "title": "Meow-meow!",
+          "color": "14177041"
+        }
+      ]
+    }
+    ```
