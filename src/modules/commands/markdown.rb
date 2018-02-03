@@ -9,7 +9,7 @@ module Bot
       command(:markdown,
               description: 'Little tutorial of Discord Markdown',
               usage: "#{BOT.prefix}markdown") do |event|
-        event.channel.send_file File.new('pictures/markdown.png')
+        event.channel.send_file File.new('files/markdown.png')
       end
 
     end
