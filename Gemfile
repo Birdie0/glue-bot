@@ -9,7 +9,7 @@ gem 'nokogiri'
 gem 'oj'
 gem 'redis'
 gem 'rufus-scheduler'
-gem 'tty-table'\
+gem 'tty-table'
 # gem 'sequel'
 # gem 'sqlite3', require: false
 # gem 'xkcd'

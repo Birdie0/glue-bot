@@ -4,7 +4,7 @@ task default: :run
 
 desc 'install requirements'
 task :install do
-  sh 'gem install bundler --conservative'
+  sh 'gem install bundler'
   sh 'bundle update'
 end
 
