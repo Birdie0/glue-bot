@@ -16,6 +16,6 @@ def get_xp_info(player)
     remaining: remaining,
     level_xp_max: get_lvl_xp(level),
     xp: get_lvl_xp(level) - remaining,
-    percent: (get_lvl_xp(level) - remaining) * 100 / get_lvl_xp(level)
+    percent: remaining * 100 / get_lvl_xp(level)
   )
 end
