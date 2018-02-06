@@ -15,7 +15,8 @@ module Bot
           embed.title = 'Monstercat FM'
           embed.url = url
           embed.description = "*#{page.css('span#title').text} - #{page.css('span#artists').text}*"
-          embed.image = Discordrb::Webhooks::EmbedImage.new(url: page.css('img#np-image')[0]['src'])
+          embed.thumbnail = Discordrb::Webhooks::EmbedThumbnail.new(url: page.css('img#np-image')[0]['src'])
+          embed.add_field(name: 'Spotify link <:spotify:410454519550312448>', value: "[Click here!](#{page.css('span#link').text})")
           embed.footer = Discordrb::Webhooks::EmbedFooter.new(text: "Album: #{page.css('span#album').text}")
           embed.timestamp = Time.now
           embed.color = rand(0..0xFFFFFF)

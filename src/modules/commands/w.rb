@@ -12,7 +12,7 @@ module Bot
       command(:w, help_available: false) do |event, element|
         info = INFO.find { |i| i['name'] == element }
         if info
-          event.channel.send_embed('') do |embed|
+          event.channel.send_embed do |embed|
             embed.title = info['name']
             # embed.url = base_url + '/structure/' + info['link'] + '.html'
             embed.description = info['description']

@@ -37,7 +37,7 @@ module Bot
         response = HTTP.auth(CONFIG.mee6_token)
                        .get("https://api.mee6.xyz/plugins/levels/leaderboard/#{server_id}?limit=12")
         if response.code == 200
-          event.channel.send_embed('') do |embed|
+          event.channel.send_embed do |embed|
             embed.color = rand(0..0xffffff)
             embed.author = Discordrb::Webhooks::EmbedAuthor.new(
               name: 'Mee6 Leaderboard',
@@ -99,7 +99,7 @@ module Bot
             description << "  #{k['name']} <@&#{k['id']}>"
           end
         end
-        event.channel.send_embed('') do |embed|
+        event.channel.send_embed do |embed|
           embed.author = Discordrb::Webhooks::EmbedAuthor.new(
             name: 'Mee6 Role Rewards',
             url: "https://mee6.xyz/levels/#{server_id}",
