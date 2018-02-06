@@ -15,7 +15,6 @@ module Bot
           embed.description = cookie['text']
           embed.footer = Discordrb::Webhooks::EmbedFooter.new(text: "Lucky numbers: #{cookie['lucky_numbers']}")
         end
-        fortune
       end
 
     end
