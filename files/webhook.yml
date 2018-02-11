@@ -5,7 +5,7 @@
   name: username
   description: |
     Overrides webhook's username. Useful, if you're using same webhook url for several things.
-  image: /img/username.png
+  image: /img/structure/username.png
   example: |
     ```json
     {
@@ -19,7 +19,7 @@
   name: avatar_url
   description: |
     Overrides webhook's avatar. Useful, if you're using same webhook url for several things.
-  image: /img/avatar_url.png
+  image: /img/structure/avatar_url.png
   example: |
     ```json
     {
@@ -33,7 +33,7 @@
   name: content
   description: |
     Sets text for webhook message.
-  image: /img/content.png
+  image: /img/structure/content.png
   example: |
     ```json
     {
@@ -46,7 +46,7 @@
   name: embeds
   description: |
     Adds embeds to webhook message. `embeds` is an array of embeds and can contain up to 10 embeds in the same message.
-  image: /img/embeds_1.png
+  image: /img/structure/embeds.png
   example: |
     ```json
     {
@@ -66,7 +66,7 @@
     * `name` - sets name.
     * `url` - sets link. Requires `name` value. If used, transforms `name` into hyperlink.
     * `icon_url` - sets avatar. Requires `name` value.
-  image: /img/embed/author.png
+  image: /img/structure/embed/author.png
   example: |
     ```json
     {
@@ -88,7 +88,7 @@
     Sets color for webhook's embed. It equals 0 (transparent) by default. Color requires number instead hex code, so you have to convert hexadecimal color code to decimal number. Color can be defined as number `65280` and as string `"65280"`.
 
     I recommend to use [SpyColor](http://www.spycolor.com/) for color picking, it provides decimal value.
-  image: /img/embed/color.png
+  image: /img/structure/embed/color.png
   example: |
     ```json
     {
@@ -110,7 +110,7 @@
   name: description
   description: |
     Sets description for webhook's embed.
-  image: /img/embed/description.png
+  image: /img/structure/embed/description.png
   example: |
     ```json
     {
@@ -131,7 +131,7 @@
     * `inline` - if `true` then sets field objects in same line, **but** if you have more than 3 objects with enabled `inline` or just too long you will get rows with 3 fields in each one or with 2 fields if you used `thumbnail` object. `false` by default. Optional.
 
     P.S. You can use up to 25 fields in same embed. `name` and `value` support [Discord Markdown]
-  image: /img/embed/fields.png
+  image: /img/structure/embed/fields.png
   example: |
     ```json
     {
@@ -168,7 +168,7 @@
 
     * `text` - sets name for author object. Markdown is disabled here!!!
     * `icon_url` - sets icon for author object. Requires `text` value.
-  image: /img/embed/footer.png
+  image: /img/structure/embed/footer.png
   example: |
     ```json
     {
@@ -187,7 +187,7 @@
   name: image
   description: |
     Allows you to use image in the embed. You can set only url of the image. There is no way to set width/height of the picture.
-  image: /img/embed/image.png
+  image: /img/structure/embed/image.png
   example: |
     ```json
     {
@@ -204,7 +204,7 @@
   name: thumbnail
   description: |
     Allows you to use thumbnail in the embed. You can set only url of the thumbnail. There is no way to set width/height of the picture.
-  image: /img/embed/thumbnail.png
+  image: /img/structure/embed/thumbnail.png
   example: |
     ```json
     {
@@ -223,7 +223,7 @@
     Allows you to add `timestamp` to embed. Time stores as String in the next format: `"YYYY-MM-DDTHH:MM:SS.MSSZ"`. If `footer` was used they will be separated with a bullet (•). Also, this is special field, because it can show different time based on user's device.
 
     P.S. Timestamp is not just text. This is formatted UTC time and date. It will show different time because timezones. Look on example below: I set 12pm but it shows 2pm because UTC+2 timezone.
-  image: /img/embed/timestamp.png
+  image: /img/structure/embed/timestamp.png
   example: |
     ```json
     {
@@ -239,7 +239,7 @@
   name: title
   description: |
     Sets title for webhook's embed.
-  image: /img/embed/title.png
+  image: /img/structure/embed/title.png
   example: |
     ```json
     {
@@ -254,7 +254,7 @@
   name: url
   description: |
     Sets link for title in your webhook message. Requires `title` variable and turns it into hyperlink.
-  image: /img/embed/url.png
+  image: /img/structure/embed/url.png
   example: |
     ```json
     {
