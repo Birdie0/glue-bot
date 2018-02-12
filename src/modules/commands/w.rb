@@ -23,8 +23,6 @@ module Bot
       REDIS = Redis.new
 
       if REDIS.get('guide-timestamp') != g.log.first.date.getutc.to_s
-        puts REDIS.get('guide-timestamp')
-        puts g.log.first.date.getutc
         x = []
         Dir.glob(path + '/docs/structure/**/*.md') do |file|
           content = File.read(file)
