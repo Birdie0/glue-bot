@@ -21,3 +21,5 @@ group :development do
   gem 'pry', require: false
   gem 'rubocop', require: false
 end
+
+gem 'archive-zip'

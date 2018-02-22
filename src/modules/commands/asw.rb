@@ -12,7 +12,7 @@ module Bot
         url = "http://www.asofterworld.com/index.php?id=#{n}"
         page = Nokogiri::HTML(open(url))
         event.channel.send_embed do |embed|
-          embed.title = "a Softer World №#{n}"
+          embed.title = "a Softer World ##{n}"
           embed.url = url
           embed.image = Discordrb::Webhooks::EmbedImage.new(url: page.css('div#comicimg img')[0]['src'])
           embed.footer = Discordrb::Webhooks::EmbedFooter.new(text: page.css('div#comicimg img')[0]['title'])
