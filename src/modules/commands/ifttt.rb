@@ -8,7 +8,7 @@ module Bot
 
       # json beautify
       command(:jbeauty) do |event|
-        body = event.message.content.match(/```.*\n(?<body>(\n|.)*)```/)
+        body = event.message.content.match(/```(json)?\n(?<body>(\n|.)*)```/)
         if body
           begin
             event << "```json\n#{MultiJson.dump(MultiJson.load(body['body']), pretty: true)}```"
