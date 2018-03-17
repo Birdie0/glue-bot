@@ -4,7 +4,6 @@
 Bundler.require
 
 require 'json'
-require 'open-uri'
 require 'ostruct'
 require 'yaml'
 

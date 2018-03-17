@@ -21,7 +21,7 @@ module Bot
           n = '8' if n.to_i > 8
           event.respond "#{n} songs added by *#{event.user.name}* from #{name} playlist"
           sleep 0.5
-          hash = JSON.parse(File.read("config/playlists/#{name}.json"))['songs']
+          hash = Oj.load_file("config/playlists/#{name}.json")['songs']
           hash.keys.sample(n.to_i).each do |i|
             event.send_temp("#{prefix} https://youtu.be/#{i}", 1)
             sleep 2

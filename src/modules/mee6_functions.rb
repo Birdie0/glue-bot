@@ -1,5 +1,5 @@
-def get_lvl_xp(xp)
-  5 * (xp**2) + 50 * xp + 100
+def get_lvl_xp(lvl)
+  5 * lvl**2 + 50 * lvl + 100
 end
 
 def get_xp_info(player)
@@ -10,12 +10,12 @@ def get_xp_info(player)
     level += 1
   end
   OpenStruct.new(
-    name: "#{player['username'].first(15)}##{player['discriminator']}",
+    name: "#{player['username'][0...15]}##{player['discriminator']}",
     level: level,
     total_xp: player['xp'],
     remaining: remaining,
     level_xp_max: get_lvl_xp(level),
     xp: get_lvl_xp(level) - remaining,
-    percent: remaining * 100 / get_lvl_xp(level)
+    percent: (remaining * 100.0 / get_lvl_xp(level)).round(2)
   )
 end

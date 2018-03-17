@@ -35,7 +35,7 @@ module Bot
             embed.description = "[Source](#{image['source']})\nTags: #{image['tags']}"
             embed.image = Discordrb::Webhooks::EmbedImage.new(url: 'http://platypus.fi/' + image['filename'])
             embed.timestamp = Time.parse(image['timestamp'])
-            embed.color = rand(0..0xFFFFFF)
+            embed.color = rand(0..0xffffff)
           end
         when 'FAIL'
           event << 'Image not found!'

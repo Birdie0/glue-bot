@@ -10,7 +10,7 @@ module Bot
               description: 'Shows information of the currently playing song on Monstercat FM',
               usage: "#{BOT.prefix}mcnow") do |event|
         url = 'https://mctl.io/'
-        page = Nokogiri::HTML(open(url))
+        page = Nokogiri::HTML(HTTP.get(url).to_s)
         event.channel.send_embed do |embed|
           embed.title = 'Monstercat FM'
           embed.url = url
@@ -19,7 +19,7 @@ module Bot
           embed.add_field(name: 'Spotify link <:spotify:410454519550312448>', value: "[Click here!](#{page.css('span#link').text})")
           embed.footer = Discordrb::Webhooks::EmbedFooter.new(text: "Album: #{page.css('span#album').text}")
           embed.timestamp = Time.now
-          embed.color = rand(0..0xFFFFFF)
+          embed.color = rand(0..0xffffff)
         end
       end
 

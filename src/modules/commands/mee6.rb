@@ -13,7 +13,7 @@ module Bot
         table = if @servers.empty?
                   'placeholder'
                 else
-                  "```#{@servers.join("\n")}```"
+                  "```\n#{@servers.join("\n")}```"
                 end
         event.channel.send_embed do |embed|
           embed.author = Discordrb::Webhooks::EmbedAuthor.new(
@@ -22,7 +22,7 @@ module Bot
             icon_url: 'https://cdn.discordapp.com/emojis/230231424739835904.png'
           )
           embed.description = "#{(id.to_i >> 22) % n}/#{n}"
-          embed.color = rand(0..0xFFFFFF)
+          embed.color = rand(0..0xffffff)
           embed.add_field(
             name: 'Last 5 shard checks',
             value: table
@@ -32,7 +32,7 @@ module Bot
       end
 
       # mee6 leaderboard command
-      command(:meelead) do |event, server_id|
+      command(:meelead) do |event, server_id| # fix xp/min/avg/max fields
         server_id ||= event.server.id
         response = HTTP.get("https://api.mee6.xyz/plugins/levels/leaderboard/#{server_id}?limit=12")
         if response.code == 200
@@ -62,8 +62,8 @@ module Bot
       end
 
       # mee6 leaderboard command alternate
-      command(:meelead2) do |event, n = 15|
-        server_id = event.server.id
+      command(:meelead2) do |event, server_id| # fix xp/min/avg/max fields
+        server_id ||= event.server.id
         response = HTTP.get("https://api.mee6.xyz/plugins/levels/leaderboard/#{server_id}?limit=#{n}")
         if response.code == 200
           table = TTY::Table.new header: ['#', 'Username', 'Level', '%', 'Total', 'Min', 'Avg', 'Max']

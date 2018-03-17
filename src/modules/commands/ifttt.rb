@@ -11,14 +11,15 @@ module Bot
         body = event.message.content.match(/```(json)?\n(?<body>(\n|.)*)```/)
         if body
           begin
-            event << "```json\n#{MultiJson.dump(MultiJson.load(body['body']), pretty: true)}```"
-          rescue MultiJson::ParseError => e
+            event << "```json\n#{JSON.pretty_generate(Oj.load(body['body']))}```" # Replace with Oj.dump
+          rescue Oj::ParseError => e
             match = e.cause.to_s.match(/line (?<line>\d+), column (?<column>\d+)/)
-            reason = e.data.to_s.split("\n").insert(match['line'].to_i, '^'.rjust(match['column'].to_i, '_')).slice(match['line'].to_i - 3 > 0 ? match['line'].to_i - 3 : 0, 6).join("\n")
+            reason = e.data.to_s.split("\n").insert(match['line'].to_i, '^'.rjust(match['column'].to_i, '_'))
+                      .slice(match['line'].to_i - 3 > 0 ? match['line'].to_i - 3 : 0, 6).join("\n")
             event << "```rb\n#{reason}``````fix\n#{e.cause}```"
           end
         else
-          event << 'Make sure you put json body between \\`\\`\\` \\`\\`\\`'
+          event << "Put json body between\n\\`\\`\\`json\n \\`\\`\\`"
         end
       end
 
@@ -66,7 +67,7 @@ module Bot
                      usage: "#{CONFIG.prefix}send <event> [[value1]|[value2]|[value3]]") do |event, event_name, *options|
         maker_key = REDIS.get "maker_key:#{event.user.id}"
         if maker_key
-          if event_name =~ /[A-Za-z\-_]+/
+          if event_name =~ /[a-z\-_]+/i
             options = options.join(' ').split('|')
             params = { value1: options[0], value2: options[1], value3: options[2] }
             response = HTTP.post("https://maker.ifttt.com/trigger/#{event_name}/with/key/#{maker_key}", json: params)
@@ -87,7 +88,7 @@ module Bot
         else
           event << 'Maker key is missing!'
           event << 'Go to <https://ifttt.com/maker_webhooks> => **Documentation**'
-          event << "and add your maker key to bot with `#{event.bot.prefix}setkey <maker_key>` in DM!"
+          event << "and add your maker key to bot with `#{BOT.prefix}setkey <maker_key>` in DM!"
         end
       end
 
@@ -98,7 +99,7 @@ module Bot
           body = event.message.content.match(/```.*\n(?<body>(\n|.)*)```/)
           if body
             begin
-              response = HTTP.post(url, json: MultiJson.load(body['body']))
+              response = HTTP.post(url, json: Oj.load(body['body']))
               event.channel.send_embed do |embed|
                 if response.code == 204
                   embed.color = 0x1ad413
@@ -109,17 +110,17 @@ module Bot
                   embed.description = response.to_s
                 end
               end
-            rescue MultiJson::ParseError => e # TODO: make output smaller
+            rescue Oj::ParseError => e # TODO: make output smaller
               match = e.cause.to_s.match(/line (?<line>\d+), column (?<column>\d+)/)
               reason = e.data.to_s.split("\n").insert(match['line'].to_i, '^'.rjust(match['column'].to_i, ' ')).join("\n")
               event << "```rb\n#{reason}``````fix\n#{e.cause}```"
             end
           else
-            event << 'Make sure you put json body between \\`\\`\\` \\`\\`\\`'
+            event << "Put json body between\n\\`\\`\\`json\n \\`\\`\\`"
           end
         else
           event << 'Webhook url is missing!'
-          event << "Send me it using `#{event.bot.prefix}seturl <webhook_url>` command in DM!"
+          event << "Send me it using `#{BOT.prefix}seturl <webhook_url>` command in DM!"
         end
       end
 

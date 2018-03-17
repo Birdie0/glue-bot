@@ -11,17 +11,17 @@ module Bot
               description: 'Shows titles from the playlist.',
               usage: "#{BOT.prefix}show <playlist> <page>") do |event, name, n = '1'|
         name.downcase!
-        if !File.exist?("config/playlists/#{name}.json")
-          event << "#{name} playlist is not exist!"
-          event << "Type `#{BOT.prefix}list` for playlists list!"
-        else
+        if File.exist?("config/playlists/#{name}.json")
           n = n.to_i
-          list = JSON.parse(File.read("config/playlists/#{name}.json"))['songs']
+          list = Oj.load_file("config/playlists/#{name}.json")['songs']
           n = list.length / 20 + 1 if n > list.length / 20 + 1
           event << '```md'
           event << "# #{name} playlist | page #{n}/#{list.length / 20 + 1}"
           list.values.slice((n - 1) * 20, 20).each { |i| event << "* #{i.chomp}" }
           event << '```'
+        else
+          event << "#{name} playlist is not exist!"
+          event << "Type `#{BOT.prefix}list` for playlists list!"
         end
       end
 

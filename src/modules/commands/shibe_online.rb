@@ -11,7 +11,7 @@ module Bot
         event.channel.send_embed do |embed|
           embed.image = Discordrb::Webhooks::EmbedImage.new(url: HTTP.get('http://shibe.online/api/shibes?count=1').parse[0])
           embed.footer = Discordrb::Webhooks::EmbedFooter.new(text: 'random shibe from shibe.online')
-          embed.color = rand(0..0xFFFFFF)
+          embed.color = rand(0..0xffffff)
         end
       end
 
@@ -20,7 +20,7 @@ module Bot
         event.channel.send_embed do |embed|
           embed.image = Discordrb::Webhooks::EmbedImage.new(url: HTTP.get('http://shibe.online/api/cats?count=1').parse[0])
           embed.footer = Discordrb::Webhooks::EmbedFooter.new(text: 'random cat from shibe.online')
-          embed.color = rand(0..0xFFFFFF)
+          embed.color = rand(0..0xffffff)
         end
       end
 
@@ -29,7 +29,7 @@ module Bot
         event.channel.send_embed do |embed|
           embed.image = Discordrb::Webhooks::EmbedImage.new(url: HTTP.get('http://shibe.online/api/birds?count=1').parse[0])
           embed.footer = Discordrb::Webhooks::EmbedFooter.new(text: 'random bird from shibe.online')
-          embed.color = rand(0..0xFFFFFF)
+          embed.color = rand(0..0xffffff)
         end
       end
 

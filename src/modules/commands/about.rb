@@ -10,9 +10,9 @@ module Bot
               description: 'Info about the bot',
               usage: "#{BOT.prefix}about") do |event|
         event << "Hello! I'm glue-bot."
-        event << 'The reason I was made was doing playlist work for Mee6, but now I can do even more!'
-        event << "My prefix is `#{event.bot.prefix}` and my help command is `#{event.bot.prefix}help`"
-        event << "I was created by #{event.bot.user(127_405_523_598_311_424).name}"
+        event << 'My main purpose was doing playlist work for Mee6, but now I can do even more!'
+        event << "My prefix is `#{BOT.prefix}` and my help command is `#{BOT.prefix}help`"
+        event << "Created by #{BOT.user(127_405_523_598_311_424).distinct}"
         event << 'using discordrb <:ruby_taco:336115106670968833>, :clock2: and :heart:'
         event << 'Source code: <https://git.io/vNMoQ>'
       end

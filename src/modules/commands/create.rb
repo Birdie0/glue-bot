@@ -15,9 +15,9 @@ module Bot
           event << "#{name} playlist already exists!"
           event << "Type `#{BOT.prefix}list` for playlists list!"
         else
-          open("config/playlists/#{name}.json", 'w') { |f| f << JSON.pretty_generate(authors: [event.user.id], songs: {}) }
+          File.write("config/playlists/#{name}.json", JSON.pretty_generate(authors: [event.user.id], songs: {})) # replace with OJ.dump
           event << "*#{name}* playlist was created!"
-          event.bot.channel(CONFIG.channel_id).send "`#{name} playlist was created by #{event.user.name}`"
+          BOT.channel(CONFIG.channel_id).send("`#{name} playlist was created by #{event.user.name}`")
         end
         nil
       end

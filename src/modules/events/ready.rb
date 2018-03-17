@@ -6,12 +6,12 @@ module Bot
     module Ready
       extend Discordrb::EventContainer
 
-      ready do |event|
-        event.bot.game = CONFIG.game
+      ready do
+        BOT.game = CONFIG.game
         puts BOT.invite_url
         puts "Bot is ready! #{Time.now}"
         puts "Prefix is '#{CONFIG.prefix}'"
-        event.bot.channel(REDIS.get('last_channel')).send("I'm back!") if REDIS.get('last_channel')
+        BOT.channel(REDIS.get('last_channel')).send("I'm back!") if REDIS.get('last_channel')
         REDIS.del('last_channel')
       end
 

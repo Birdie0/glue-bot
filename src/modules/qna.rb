@@ -1,6 +1,3 @@
-require 'http'
-require 'ostruct'
-
 # QnA Client
 class QnA
   BASE_URL = 'https://westus.api.cognitive.microsoft.com/qnamaker/v2.0/knowledgebases'.freeze
