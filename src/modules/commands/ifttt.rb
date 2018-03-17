@@ -13,10 +13,11 @@ module Bot
           begin
             event << "```json\n#{JSON.pretty_generate(Oj.load(body['body']))}```" # Replace with Oj.dump
           rescue Oj::ParseError => e
-            match = e.cause.to_s.match(/line (?<line>\d+), column (?<column>\d+)/)
-            reason = e.data.to_s.split("\n").insert(match['line'].to_i, '^'.rjust(match['column'].to_i, '_'))
-                      .slice(match['line'].to_i - 3 > 0 ? match['line'].to_i - 3 : 0, 6).join("\n")
-            event << "```rb\n#{reason}``````fix\n#{e.cause}```"
+            # match = e.cause.to_s.match(/line (?<line>\d+), column (?<column>\d+)/)
+            # reason = e.data.to_s.split("\n").insert(match['line'].to_i, '^'.rjust(match['column'].to_i, '_'))
+            #           .slice(match['line'].to_i - 3 > 0 ? match['line'].to_i - 3 : 0, 6).join("\n")
+            # event << "```rb\n#{reason}``````fix\n#{e.cause}```"
+            event << "Invalid JSON body!"
           end
         else
           event << "Put json body between\n\\`\\`\\`json\n \\`\\`\\`"
@@ -111,9 +112,10 @@ module Bot
                 end
               end
             rescue Oj::ParseError => e # TODO: make output smaller
-              match = e.cause.to_s.match(/line (?<line>\d+), column (?<column>\d+)/)
-              reason = e.data.to_s.split("\n").insert(match['line'].to_i, '^'.rjust(match['column'].to_i, ' ')).join("\n")
-              event << "```rb\n#{reason}``````fix\n#{e.cause}```"
+              # match = e.cause.to_s.match(/line (?<line>\d+), column (?<column>\d+)/)
+              # reason = e.data.to_s.split("\n").insert(match['line'].to_i, '^'.rjust(match['column'].to_i, ' ')).join("\n")
+              # event << "```rb\n#{reason}``````fix\n#{e.cause}```"
+              event << "Invalid JSON body!"
             end
           else
             event << "Put json body between\n\\`\\`\\`json\n \\`\\`\\`"
