@@ -44,6 +44,29 @@ module Bot
         end
       end
 
+      # json preview
+      command(:jpre) do |event|
+        body = event.message.content.match(/```(json)?\n(?<body>(\n|.)*)```/)
+        if body
+          begin
+            body = Oj.load(body['body']
+              .gsub('<<<', '').gsub('>>>', '')
+              .gsub('@everyone', "@\u{200B}everyone")
+              .gsub('@here', "@\u{200B}here"))
+            # body['embed'] = body['embeds'].first unless body['embeds'].nil? || body['embeds'].empty?
+            event.send(body['content'], nil, body['embeds'] && !body['embeds'].nil? ? body['embeds'].first : nil)
+          rescue Oj::ParseError
+            # match = e.cause.to_s.match(/line (?<line>\d+), column (?<column>\d+)/)
+            # reason = e.data.to_s.split("\n").insert(match['line'].to_i, '^'.rjust(match['column'].to_i, '_'))
+            #           .slice(match['line'].to_i - 3 > 0 ? match['line'].to_i - 3 : 0, 6).join("\n")
+            # event << "```rb\n#{reason}``````fix\n#{e.cause}```"
+            event << 'Invalid JSON body!'
+          end
+        else
+          event << "Put json body between\n\\`\\`\\`json\n \\`\\`\\`"
+        end
+      end
+
       # set key
       command(:setkey, min_args: 1) do |event, key|
         if key =~ /[a-zA-Z0-9\-_]+/
