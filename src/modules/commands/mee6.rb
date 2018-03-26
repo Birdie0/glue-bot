@@ -6,9 +6,11 @@ module Bot
     module Mee6
       extend Discordrb::Commands::CommandContainer
 
+      REDIS.setnx('mee6_shards', 512)
+      
       # mee6 shard calculation
       command(:mshard) do |event, id = event.server.id|
-        n = REDIS.get('mee6_shards') || 512 # number of shards
+        n = REDIS.get('mee6_shards') # number of shards
         @servers ||= []
         table = if @servers.empty?
                   'placeholder'
