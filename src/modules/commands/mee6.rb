@@ -10,7 +10,7 @@ module Bot
       
       # mee6 shard calculation
       command(:mshard) do |event, id = event.server.id|
-        n = REDIS.get('mee6_shards') # number of shards
+        n = REDIS.get('mee6_shards').to_i # number of shards
         @servers ||= []
         table = if @servers.empty?
                   'placeholder'
