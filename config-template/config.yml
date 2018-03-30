@@ -20,3 +20,6 @@ channel_id:
 # QnA Credentials
 knowledgebase_id:
 subscription_key:
+
+# Suggestions Channel ID
+suggestions_channel_id:
