@@ -102,3 +102,9 @@ If you have any questions or suggestions, please come on my [Discord server](htt
 ### Template
 
 * [gemstone](https://github.com/z64/gemstone) - bot was rewrited using this template
+
+## Contributors
+
+* LEGION - grammar fixes, suggestions, feedback
+* deframet - restart messages, suggestions
+* WolfGang1710 - suggestions, feedback
