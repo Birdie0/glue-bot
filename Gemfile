@@ -19,3 +19,4 @@ group :development do
 end
 
 gem 'archive-zip'
+gem 'chronic'
