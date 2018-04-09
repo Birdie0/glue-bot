@@ -31,7 +31,7 @@ module Bot
   SCHEDULER = Rufus::Scheduler.new
 
   # QnA client
-  QNA = QnA.new(
+  QNA = QnAMaker::Client.new(
     CONFIG.knowledgebase_id,
     CONFIG.subscription_key
   )

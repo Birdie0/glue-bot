@@ -112,7 +112,7 @@ module Bot
 
       command(:ask) do |event, *question|
         response = QNA.generate_answer(question.join(' '))
-        event << "#{response.answer} [#{response.score}]"
+        event << "#{response.first.answer} [#{response.first.score}]"
       end
 
       # command(:addq, required_roles: [193_123_929_701_875_712]) do |event|
