@@ -85,6 +85,7 @@ module Bot
                                        color: color[:green])
               end
               REDIS.del("qna_#{event.message.id}")
+              event.message.delete_all_reactions
             end
           end
         end
