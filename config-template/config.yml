@@ -23,3 +23,8 @@ subscription_key:
 
 # Suggestions Channel ID
 suggestions_channel_id:
+
+# Testing stuff
+tester_role:
+ask_channel:
+training_channel:
