@@ -69,7 +69,7 @@ module Bot
             info = REDIS.hgetall("qna_#{event.message.id}")
             if info.any?
               status = QNA.train_kb([
-                                      rand(0..1_000_000_000).to_s,
+                                      rand(1..10_000).to_s,
                                       info['user_question'],
                                       info["kb_question_#{index}"],
                                       info["kb_answer_#{index}"]
