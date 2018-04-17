@@ -12,7 +12,7 @@ module Bot
 
       message(in: CONFIG.ask_channel) do |event|
         message = event.message.content
-        answers = QNA.generate_answer(message, 3)
+        answers = QNA.generate_answer(message, 8)
         if answers.first.score.zero? # question not found
           BOT.channel(CONFIG.training_channel).send_embed do |e|
             e.author = Discordrb::Webhooks::EmbedAuthor.new(

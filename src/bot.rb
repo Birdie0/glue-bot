@@ -60,6 +60,12 @@ module Bot
     BOT.include! DiscordEvents.const_get mod
   end
 
+  Dir['src/modules/test/*.rb'].each { |mod| load mod }
+  DiscordCommands.constants.each do |mod|
+    BOT.include! DiscordCommands.const_get mod
+    # BOT.include! DiscordEvents.const_get mod
+  end
+
   # Owner permission
   BOT.set_user_permission(CONFIG.owner_id, 999)
 
