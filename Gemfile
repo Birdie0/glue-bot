@@ -7,7 +7,6 @@ gem 'git'
 gem 'http'
 gem 'nokogiri'
 gem 'oj'
-gem 'mini_magick'
 gem 'qna_maker', git: 'https://github.com/Birdie0/qna_maker.git'
 gem 'redis'
 gem 'rufus-scheduler'
@@ -22,3 +21,4 @@ end
 
 gem 'archive-zip'
 gem 'chronic'
+gem 'mini_magick'
