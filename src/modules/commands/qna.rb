@@ -14,9 +14,9 @@ module Bot
       end
 
       command(:addq, required_roles: [CONFIG.tester_role]) do |event|
-        match = event.message.content.match(/#{BOT.prefix}addq (?<question>.+)\|(?<answer>(.)+)/s)
+        match = event.message.content.match(/#{BOT.prefix}addq (?<question>.+)\|(?<answer>(.|\n)+)/)
         if match && match['question'] && match['answer']
-          if QNA.update_kb(add: [[match['answer'].strip, match['question'].strip]]).nil?
+          if QNA.update_kb(add: [[match['question'].strip, match['answer'].strip]]).nil?
             event << ':ok_hand:'
           end
         else
@@ -25,9 +25,9 @@ module Bot
       end
 
       command(:remq, required_roles: [CONFIG.tester_role]) do |event|
-        match = event.message.content.match(/#{BOT.prefix}remq (?<question>.+)\|(?<answer>(.)+)/s)
+        match = event.message.content.match(/#{BOT.prefix}remq (?<question>.+)\|(?<answer>(.|\n)+)/)
         if match && match['question'] && match['answer']
-          if QNA.update_kb(delete: [[match['answer'].strip, match['question'].strip]]).nil?
+          if QNA.update_kb(delete: [[match['question'].strip, match['answer'].strip]]).nil?
             event << ':ok_hand:'
           end
         else
