@@ -36,7 +36,7 @@ module Bot
       # mee6 leaderboard command
       command(:meelead) do |event, server_id| # fix xp/min/avg/max fields
         server_id ||= event.server.id
-        response = HTTP.get("https://api.mee6.xyz/plugins/levels/leaderboard/#{server_id}?limit=12")
+        response = HTTP.get("https://mee6.xyz/api/plugins/levels/leaderboard/#{server_id}?limit=12")
         if response.code == 200
           event.channel.send_embed do |embed|
             embed.color = rand(0..0xffffff)
@@ -66,7 +66,7 @@ module Bot
       # mee6 leaderboard command alternate
       command(:meelead2) do |event, server_id|
         server_id ||= event.server.id
-        response = HTTP.get("https://api.mee6.xyz/plugins/levels/leaderboard/#{server_id}?limit=12")
+        response = HTTP.get("https://mee6.xyz/api/plugins/levels/leaderboard/#{server_id}?limit=12")
         if response.code == 200
           table = TTY::Table.new header: ['#', 'Username', 'Level', '%', 'Total', 'Min', 'Avg', 'Max']
           response.parse['players'].each_with_index do |player, index|
