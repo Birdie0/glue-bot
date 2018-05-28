@@ -6,12 +6,39 @@ module Bot
     module Fun
       extend Discordrb::Commands::CommandContainer
 
+      DISHES = [
+        'coffee',
+        'tea',
+        'taco',
+        'spaghetti',
+        'beer',
+        'pizza',
+        'hotdog',
+        'fries',
+        'hamburger',
+        'pizza',
+        'spaghetti',
+        'taco',
+        'burrito',
+        'ramen',
+        'stew',
+        'sushi',
+        'curry',
+        'rice',
+        'custard',
+        'tropical_drink',
+        'croissant',
+        'stuffed_flatbread',
+        'salad',
+        'pancakes'
+      ]
+
       command(:order,
-              description: 'Info about the bot',
+              # description: 'Info about the bot',
               usage: "#{BOT.prefix}order coffee") do |event, *args|
-        name = args.join(' ')
+        name = args.join('_')
         case name
-        when 'coffee', 'tea'
+        when DISHES.include? name.tr('_',' ')
           event.send ':ok_hand: One minute, please!'
           SCHEDULER.in '60s' do
             event.send "#{event.user.mention}, here's your #{name}! :#{name}:"
@@ -21,6 +48,14 @@ module Bot
           event << 'Sorry, I do not know what is that.'
           event << "Use `#{BOT.prefix}suggest` to send your suggestion. :wink:"
         end
+      end
+
+      command(:foods,
+              # description: 'Info about the bot',
+              usage: "#{BOT.prefix}food") do |event|
+        event << "```md\nList:"
+        event << DISHES.map{|i| "# #{i}"}.join("\n")
+        event << "```"
       end
 
       command(:suggest,
