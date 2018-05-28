@@ -53,7 +53,7 @@ module Bot
               # description: 'Info about the bot',
               usage: "#{BOT.prefix}food") do |event|
         event << "```md\nList:"
-        event << DISHES.map{|i| "# #{i}"}.join("\n")
+        event << DISHES.map{|i| "# #{i.tr(' ', '_')}"}.join("\n")
         event << "```"
       end
 
