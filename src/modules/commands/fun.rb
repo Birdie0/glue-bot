@@ -26,9 +26,9 @@ module Bot
         'curry',
         'rice',
         'custard',
-        'tropical_drink',
+        'tropical drink',
         'croissant',
-        'stuffed_flatbread',
+        'stuffed flatbread',
         'salad',
         'pancakes'
       ]
@@ -36,8 +36,8 @@ module Bot
       command(:order,
               # description: 'Info about the bot',
               usage: "#{BOT.prefix}order coffee") do |event, *args|
-        name = args.join('_')
-        if DISHES.include?(name.tr('_',' '))
+        name = args.join(' ')
+        if DISHES.include?(name.tr(' ','_'))
           event.send ':ok_hand: One minute, please!'
           SCHEDULER.in '60s' do
             event.send "#{event.user.mention}, here's your #{name}! :#{name}:"
