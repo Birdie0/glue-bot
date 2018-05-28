@@ -37,8 +37,7 @@ module Bot
               # description: 'Info about the bot',
               usage: "#{BOT.prefix}order coffee") do |event, *args|
         name = args.join('_')
-        case name
-        when DISHES.include?(name.tr('_',' '))
+        if DISHES.include?(name.tr('_',' '))
           event.send ':ok_hand: One minute, please!'
           SCHEDULER.in '60s' do
             event.send "#{event.user.mention}, here's your #{name}! :#{name}:"
