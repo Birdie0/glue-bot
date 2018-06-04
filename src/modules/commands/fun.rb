@@ -57,6 +57,27 @@ module Bot
         event << "```"
       end
 
+      FOODS = Oj.load_file('config/foods.json')
+      command(:order2) do |event, *dish|
+        dish = dish.join(' ').downcase
+        food = FOODS['foods'].find{|i| (i['aliases']+[i['name']]).include?(dish)}
+        if food
+          event.send ':ok_hand: Uno momento!'
+          SCHEDULER.in "#{food['duration']}s" do
+            event.send "#{event.user.mention}, here's your #{food['name']}! #{food['emojis'].sample}\n#{food['images'].sample}"
+          end
+          nil
+        else
+          event.send "Sorry, I don't know what's this! Check `g.foods2`, maybe you misspelled the name of dish."
+        end
+      end
+
+      command(:foods2, usage: "#{BOT.prefix}food") do |event|
+        event << "```md\nList:"
+        event << FOODS['foods'].map{|i| "# #{i['name']}"}.join("\n")
+        event << "```"
+      end
+
       command(:suggest,
               description: "Send suggestions to bot's dev",
               usage: "#{BOT.prefix}suggest cat command",
