@@ -78,6 +78,22 @@ module Bot
         event << "```"
       end
 
+      command(:foodinfo) do |event, *dish|
+        dish = dish.join(' ').downcase
+        food = FOODS['foods'].find{|i| (i['aliases']+[i['name']]).include?(dish)}
+        if food
+          event.channel.send_embed do |embed|
+            embed.color = 0xe8f04d
+            embed.title = food['name']
+            # embed.thumbnail = Discordrb::Webhooks::EmbedThumbnail.new(url: food['images'].sample)
+            embed.add_field(name: 'Preparation time', value: "#{food['duration']} seconds")
+            embed.add_field(name: 'Icon', value: food['emojis'].first)
+          end
+        else
+          event.send "Sorry, I don't know what's this! Check `g.foods2`, maybe you misspelled the name of dish."
+        end
+      end
+
       command(:suggest,
               description: "Send suggestions to bot's dev",
               usage: "#{BOT.prefix}suggest cat command",
