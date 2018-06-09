@@ -10,7 +10,7 @@ end
 
 desc 'update from github repo'
 task :update do
-  sh 'git stash'
+  sh 'git stash save -u'
   sh 'git pull'
 end
 
