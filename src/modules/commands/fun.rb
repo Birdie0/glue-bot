@@ -30,14 +30,14 @@ module Bot
         'taco',
         'taco',
         'tea',
-        'tropical drink',
-      ]
+        'tropical drink'
+      ].freeze
 
       command(:order,
               # description: 'Info about the bot',
               usage: "#{BOT.prefix}order coffee") do |event, *args|
         name = args.join(' ')
-        if DISHES.include?(name.tr(' ','_'))
+        if DISHES.include?(name.tr(' ', '_'))
           event.send ':ok_hand: One minute, please!'
           SCHEDULER.in '60s' do
             event.send "#{event.user.mention}, here's your #{name}! :#{name}:"
@@ -53,14 +53,14 @@ module Bot
               # description: 'Info about the bot',
               usage: "#{BOT.prefix}food") do |event|
         event << "```md\nList:"
-        event << DISHES.map{|i| "# #{i.tr(' ', '_')}"}.join("\n")
-        event << "```"
+        event << DISHES.map { |i| "# #{i.tr(' ', '_')}" }.join("\n")
+        event << '```'
       end
 
       FOODS = Oj.load_file('config/foods.json')
       command(:order2) do |event, *dish|
         dish = dish.join(' ').downcase
-        food = FOODS['foods'].find{|i| (i['aliases']+[i['name']]).include?(dish)}
+        food = FOODS['foods'].find { |i| (i['aliases'] + [i['name']]).include?(dish) }
         if food
           event.send ':ok_hand: Uno momento!'
           SCHEDULER.in "#{food['duration']}s" do
@@ -74,13 +74,13 @@ module Bot
 
       command(:foods2, usage: "#{BOT.prefix}food") do |event|
         event << "```md\nList:"
-        event << FOODS['foods'].map{|i| "# #{i['name']}"}.join("\n")
-        event << "```"
+        event << FOODS['foods'].map { |i| "# #{i['name']}" }.join("\n")
+        event << '```'
       end
 
       command(:foodinfo) do |event, *dish|
         dish = dish.join(' ').downcase
-        food = FOODS['foods'].find{|i| (i['aliases']+[i['name']]).include?(dish)}
+        food = FOODS['foods'].find { |i| (i['aliases'] + [i['name']]).include?(dish) }
         if food
           event.channel.send_embed do |embed|
             embed.color = 0xe8f04d

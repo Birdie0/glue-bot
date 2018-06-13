@@ -26,6 +26,7 @@
   * `xkcd` - shows random [xkcd](http://xkcd.com/) comic
   * `asw` - shows random [a Softer World](http://www.asofterworld.com/) comic
   * `nedr` - shows random [Nedroid](http://nedroid.com/) comic
+  * `ohno` - shows random [Webcomic Name](http://webcomicname.com) comic
 
 * Pictures
   * `shibe` - shows random shibe
@@ -90,6 +91,7 @@ If you have any questions or suggestions, please come on my [Discord server](htt
 * [Xkcd](https://xkcd.com) by Randall Munroe
 * [A Softer World](http://www.asofterworld.com) by Joey Comeau and Emily Horne
 * [Nedroid](http://nedroid.com) by Anthony Clar
+* [Webcomic Name](http://webcomicname.com) by Alex Norris
 
 ### APIs
 
