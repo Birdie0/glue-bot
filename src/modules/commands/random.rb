@@ -8,7 +8,7 @@ module Bot
       extend Discordrb::Commands::CommandContainer
 
       command(:random,
-              min_args: 2,
+              min_args: 1,
               description: 'Picks random n songs from pre-generated playlists.',
               usage: "#{BOT.prefix}rand <playlist> [n = 15]") do |event, name, n = 15|
         name.downcase!
@@ -18,7 +18,7 @@ module Bot
         else
           n = '25' if n.to_i > 25
           event << "```md"
-          event << "Here's your random #{n} songs from #{name} playlist"
+          event << "# Here's your random #{n} songs from #{name} playlist"
           hash = Oj.load_file("config/playlists/#{name}.json")['songs']
           hash.values.sample(n.to_i).each do |i|
             event << "#{i}"
