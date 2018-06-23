@@ -15,7 +15,7 @@ module Bot
           embed.title = 'oh no!'
           embed.url = site.uri.to_s
           embed.image = Discordrb::Webhooks::EmbedImage.new(url: page.css('div.photo-wrapper-inner a img').first['src'])
-          embed.color = [0xFF7DB6, 0xFFF566, 0x8FFFA7].sample
+          embed.color = [0xFF7DB6, 0xFFF566, 0x8FFFA7, 0x75B1FF, 0xB67DFF].sample
         end
       end
 
