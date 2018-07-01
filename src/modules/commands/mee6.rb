@@ -51,9 +51,9 @@ module Bot
                 name: "#{index + 1}) #{user.name} (Level: #{user.level})",
                 value: "#{user.xp}/#{user.level_xp_max} (#{user.percent}%)\n" \
                        "T:#{user.total_xp}xp\n" \
-                       "Min:#{((user.level_xp_max - user.remaining) / 25.0).ceil} " \
-                       "Avg:#{((user.level_xp_max - user.remaining) / 20.0).ceil} " \
-                       "Max:#{((user.level_xp_max - user.remaining) / 15.0).ceil}",
+                       "Min:#{((user.level_xp_max - user.xp) / 25.0).ceil} " \
+                       "Avg:#{((user.level_xp_max - user.xp) / 20.0).ceil} " \
+                       "Max:#{((user.level_xp_max - user.xp) / 15.0).ceil}",
                 inline: true
               )
             end
@@ -76,9 +76,9 @@ module Bot
                       user.level,
                       user.percent,
                       user.total_xp,
-                      ((user.level_xp_max - user.remaining) / 25.0).ceil,
-                      ((user.level_xp_max - user.remaining) / 20.0).ceil,
-                      ((user.level_xp_max - user.remaining) / 15.0).ceil]
+                      ((user.level_xp_max - user.xp) / 25.0).ceil,
+                      ((user.level_xp_max - user.xp) / 20.0).ceil,
+                      ((user.level_xp_max - user.xp) / 15.0).ceil]
           end
           "```\n#{table.render(:unicode, alignment: [:center])}```"
         else
