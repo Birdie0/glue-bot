@@ -1,5 +1,7 @@
 # glue-bot
 
+:warning: **This repo is longer maintained! Bot is still getting updates but in closed source way.** :warning:
+
 ## List of commands
 
 * Info
